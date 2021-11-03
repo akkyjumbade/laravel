@@ -1,0 +1,22 @@
+{
+    "name": "akshayjumbade/geo-locations",
+    "authors": [
+        {
+            "name": "Akshay Jumbade",
+            "email": "akkyjumbade@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\GeoLocations\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\GeoLocations\\GeoLocationsServiceProvider"
+            ]
+        }
+    }
+}
