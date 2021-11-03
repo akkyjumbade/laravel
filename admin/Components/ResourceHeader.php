@@ -4,23 +4,20 @@ namespace Admin\Components;
 
 use Illuminate\View\Component;
 
-class Table extends Component
+class ResourceHeader extends Component
 {
-   public $actions;
-   public $columns;
-   public $rows;
+   public $menus;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct($columns = [], $rows = [])
+   public function __construct()
    {
-      $this->columns = $columns;
-      $this->rows = $rows;
-      $this->actions = [
+      $this->menus = [
          [
-
+            'label' => 'Dashboard',
+            'to' => url('/dashboard')
          ]
       ];
    }
@@ -32,6 +29,6 @@ class Table extends Component
     */
    public function render()
    {
-      return view('admin::components.table');
+      return view('admin::components.resource-header');
    }
 }

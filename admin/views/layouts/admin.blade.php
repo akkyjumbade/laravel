@@ -22,6 +22,10 @@
 
 
    {{ $head ?? '' }}
+
+   {{ $css ?? '' }}
+
+
    <script>
       // setup config from server
       const admin = <?php echo json_encode($layoutData ?? []) ?>;
@@ -29,22 +33,23 @@
    </script>
 </head>
 <body class="font-sans" style="">
-   <div class="font-sans text-gray-900 antialiased">
+   <div id="root" x-data="{ isExpandedSidebar: false }" class="font-sans text-gray-900 antialiased">
       <div class="min-h-screen flex bg-gray-200">
          <x-admin-sidebar></x-admin-sidebar>
          <div class="flex-grow flex flex-col">
             <x-admin-header></x-admin-header>
             <div class="flex-grow flex flex-col">
+               @if($attributes->get('resource'))
+               <x-admin-resource-header :resource="$attributes->get('resource')" :title="$attributes->get('title')"></x-admin-resource-header>
+               @endif
                {{ $slot }}
-
             </div>
          </div>
       </div>
    </div>
-      <div class="vue-portal-target"></div>
-      <!---->
-   </div>
-{{ $scripts ?? '' }}
+   <div class="vue-portal-target"></div>
+
+   {{ $scripts ?? '' }}
    @stack('js')
    <script src="@asset('admin/libs/alpinejs/alpinejs.min.js')"></script>
    <script src="@asset('admin/js/script.js')"></script>

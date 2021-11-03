@@ -4,20 +4,25 @@ namespace Admin\Components;
 
 use Illuminate\View\Component;
 
-class Table extends Component
+class Settings extends Component
 {
    public $actions;
    public $columns;
    public $rows;
+   public $options;
+
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct($columns = [], $rows = [])
+   public function __construct($columns = [], $rows = [], $options = null)
    {
       $this->columns = $columns;
       $this->rows = $rows;
+      $this->options = $options;
+
+
       $this->actions = [
          [
 
@@ -32,6 +37,6 @@ class Table extends Component
     */
    public function render()
    {
-      return view('admin::components.table');
+      return view('admin::components.settings.index');
    }
 }

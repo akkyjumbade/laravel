@@ -1,28 +1,39 @@
-<section class="section py-3 px-3">
-   <div class="flex items-baseline section__header mb-4 justify-between">
-      <div>
-         <h1 class="text-3xl font-bold">
-            Users
-         </h1>
-      </div>
-      <div>
-         <a href="{{ route('admin.users.create') }}" class="bg-white border px-4 py-2 hover:bg-gray-900 rounded-lg hover:text-white">
-            <span>Create</span>
-            <i class="fa fa-plus ml-1"></i>
-         </a>
-      </div>
-   </div>
-   <div class="table-container">
-      <table class="table table-hover">
+@push('js')
+<script>
+   const columns = @json($columns);
+   const rows = @json($rows);
+
+   const collection = () => {
+      return {
+         columns,
+         rows
+      }
+   };
+</script>
+@endpush
+<section class="section container mx-auto my-4 px-4">
+   <div class="table-container rounded-2xl bg-white border overflow-hidden">
+      <table class="table table-hover w-full" x-data="collection">
          <thead>
-         <tr>
-            @foreach ($columns as $col)
-            <th>{{ __($col) }}</th>
-            @endforeach
-         </tr>
+            <tr>
+               <template x-for="th, thindex in columns" x-key="thindex">
+                  <th class="text-left px-3 py-2">
+                     <span x-text="th"></span>
+                  </th>
+               </template>
+            </tr>
          </thead>
          <tbody>
-         {{ $slot }}
+            <template x-for="row, rowindex in rows.data" x-key="rowindex">
+               <tr>
+                  <template x-for="rowCol, rowColIndex in columns" x-key="'row_'+rowColIndex">
+                     <td class="text-left px-3 py-2">
+                        <span x-text="row[rowCol]"></span>
+                     </td>
+                  </template>
+               </tr>
+            </template>
+            {{ $slot }}
          </tbody>
       </table>
    </div>

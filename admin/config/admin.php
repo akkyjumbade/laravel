@@ -13,12 +13,17 @@ return [
    'menus' => [
       'resources' => [
          [
-            'label' => 'Countries',
-            'to' => url('admin.geo.countries.index'),
+
+            'label' => 'Categories',
+            'to' => url('admin/categories'),
          ],
          [
-            'label' => 'Postal codes',
-            'to' => url('admin.geo.postal_codes.index'),
+            'label' => 'Vehicles',
+            'to' => url('admin/vehicles'),
+         ],
+         [
+            'label' => 'Bookings',
+            'to' => url('admin/bookings'),
          ],
       ],
       'system' => [
@@ -28,6 +33,10 @@ return [
          ],
          [
             'label' => 'Vendors',
+            'to' => route('admin.users.index')
+         ],
+         [
+            'label' => 'Drivers',
             'to' => route('admin.users.index')
          ],
          [

@@ -22,11 +22,14 @@ Route::group([
    Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
    Route::get('settings', [\Admin\Http\Controllers\SettingController::class, 'index'])->name('settings');
    // Modules specific
+   Route::resource('roles', RoleController::class);
+   Route::resource('permissions', PermissionController::class);
+   Route::resource('categories', PermissionController::class);
 
    Route::resource('users', UserController::class);
    Route::resource('users:{role}', UserController::class);
-   Route::resource('roles', RoleController::class);
-   Route::resource('permissions', PermissionController::class);
+
+
 
 
 

@@ -9,20 +9,16 @@ use App\Models\User;
 class SettingController extends Controller
 {
    function index(Request $req, $reqCode = null) {
-      $users = User::latest();
-      if ($reqCode) {
-         $users->whereHas('role', function($q) use ($reqCode) {
-            $q->where('code', $reqCode);
-         });
-      }
-      $status = $req->query('status', null);
-      if ($status) {
-         $users->where('status', $status);
-      }
-      //$status = $req->query('status', null);
-      $users = $users->paginate(config('admin.pagination_limit'));
-      return view('admin::users.index', compact(
-         'users'
+;
+      $options = collect(\DB::table('options')->get());
+      $options = $options->mapWithKeys(function ($row) {
+         return $row;
+//         return [
+//
+//         ];
+      });
+      return view('admin::settings', compact(
+         'options'
       ));
    }
 

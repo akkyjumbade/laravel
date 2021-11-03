@@ -2,9 +2,16 @@
    class="relative shadow-md bg-white flex-shrink-0"
 
 >
-   <div class="flex justify-between items-center h-16 px-12">
+   <div class="flex justify-between items-center h-16 md:px-12 px-4">
+      <div class="md:hidden mr-3">
+         <button class="toggle-btn" type="button" x-on:click="isExpandedSidebar = !isExpandedSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+         </button>
+      </div>
       <div>
-         <div class="relative w-64">
+         <div class="relative md:w-64">
             <div class="relative z-50">
                <input
                   type="text"
@@ -26,12 +33,12 @@
             <!---->
          </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center" x-data="{ isOpen: false }">
 
          <div class="ml-6">
             <!---->
             <div class="relative">
-               <button type="button" class="block w-full focus:outline-none">
+               <button type="button" x-on:click="isOpen = !isOpen" class="block w-full focus:outline-none">
                        <span class="flex items-center"
                        ><img
                              src="{{ auth()->user()->avatar_url }}"
@@ -49,6 +56,13 @@
                          ></span>
                </button>
                <!---->
+               <div x-show="isOpen" class="absolute bg-white p-3 w-full shadow-lg rounded-lg dropdown-menu">
+                  <ul>
+                     <li class="rounded-lg overflow-hidden">
+                        <a class="px-3 w-full flex py-1 hover:bg-gray-200" href="{{ route('admin.logout') }}">Logout</a>
+                     </li>
+                  </ul>
+               </div>
             </div>
          </div>
       </div>
