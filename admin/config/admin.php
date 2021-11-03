@@ -38,6 +38,10 @@ return [
             'label' => 'Permissions',
             'to' => route('admin.permissions.index')
          ],
+         [
+            'label' => 'Settings',
+            'to' => url('admin/settings')
+         ],
       ]
    ],
    'pagination_limit' => 100,

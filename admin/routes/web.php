@@ -20,11 +20,14 @@ Route::group([
    Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
    Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
    Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-
+   Route::get('settings', [\Admin\Http\Controllers\SettingController::class, 'index'])->name('settings');
    // Modules specific
 
    Route::resource('users', UserController::class);
    Route::resource('users:{role}', UserController::class);
    Route::resource('roles', RoleController::class);
    Route::resource('permissions', PermissionController::class);
+
+
+
 });
