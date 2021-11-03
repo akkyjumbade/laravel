@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \Admin\Http\Controllers\{
+   DashboardController,
+   UserController,
+   RoleController,
+   PermissionController,
+};
 
 Route::group([
    'prefix' => 'admin',
@@ -9,13 +15,15 @@ Route::group([
       'web', 'auth'
    ]
 ], function () {
-   Route::get('/', [\Admin\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-   Route::get('/profile', [\Admin\Http\Controllers\DashboardController::class, 'profile'])->name('profile');
-   Route::get('/inbox', [\Admin\Http\Controllers\DashboardController::class, 'inbox'])->name('inbox');
-   Route::get('/edit', [\Admin\Http\Controllers\DashboardController::class, 'editProfile'])->name('edit');
-   Route::get('/logout', [\Admin\Http\Controllers\DashboardController::class, 'logout'])->name('logout');
+   Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+   Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+   Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
+   Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
+   Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
    // Modules specific
 
-   Route::resource('users', \Admin\Http\Controllers\UserController::class);
+   Route::resource('users', UserController::class);
+   Route::resource('roles', RoleController::class);
+   Route::resource('permissions', PermissionController::class);
 });

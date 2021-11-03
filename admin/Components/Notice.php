@@ -4,10 +4,9 @@ namespace Admin\Components;
 
 use Illuminate\View\Component;
 
-class Sidebar extends Component
+class Notice extends Component
 {
    public $menus;
-   public $resources;
    /**
     * Create a new component instance.
     *
@@ -15,8 +14,12 @@ class Sidebar extends Component
     */
    public function __construct()
    {
-      $this->menus = config('admin.menus.system');
-      $this->resources = [];
+      $this->menus = [
+         [
+            'label' => 'Dashboard',
+            'to' => url('/dashboard')
+         ]
+      ];
    }
 
    /**
@@ -26,6 +29,6 @@ class Sidebar extends Component
     */
    public function render()
    {
-      return view('admin::components.sidebar');
+      return view('admin::components.header');
    }
 }

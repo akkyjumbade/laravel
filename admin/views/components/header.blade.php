@@ -1,73 +1,56 @@
-<!-- Page Header Start-->
-<div class="page-main-header">
-   <div class="main-header-right row">
-      <div class="main-header-left col-auto px-0 d-lg-none">
-         <div class="logo-wrapper"><a href="index.html"><img src="@asset('logo.png')" alt=""></a></div>
-      </div>
-      <div class="vertical-mobile-sidebar col-auto ps-3 d-none"><i class="fa fa-bars sidebar-bar"></i></div>
-      <div class="mobile-sidebar col-auto ps-0 d-block">
-         <div class="media-body switch-sm">
-            <label class="switch"><a href="#"><i id="sidebar-toggle" data-feather="align-left"></i></a></label>
-         </div>
-      </div>
-      <div class="nav-right col p-0">
-         <ul class="nav-menus">
-            <li>
-               <form class="form-inline search-form" action="#" method="get">
-                  <div class="form-group me-0">
-                     <div class="Typeahead Typeahead--twitterUsers">
-                        <div class="u-posRelative">
-                           <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search...">
-                           <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
-                        </div>
-                        <div class="Typeahead-menu"></div>
-                     </div>
-                  </div>
-               </form>
-            </li>
+<div
+   class="relative shadow-md bg-white flex-shrink-0"
 
-            <li class="onhover-dropdown"><i data-feather="bell"></i><span class="dot"></span>
-               <ul class="notification-dropdown onhover-show-div">
-                  <li>Notification <span class="badge rounded-pill badge-primary pull-right">{{ count(auth()->user()->unreadNotifications) }}</span></li>
-                  @forelse (auth()->user()->unreadNotifications as $item)
-                  <li>
-                     <div class="media">
-                        <div class="media-body">
-                           <h6 class="mt-0"><span><i class="shopping-color" data-feather="shopping-bag"></i></span>Your order ready for Ship..!<small class="pull-right">9:00 AM</small></h6>
-                           <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
-                        </div>
-                     </div>
-                  </li>
-                  @empty
-
-                  @endforelse
-                  <li class="bg-light txt-dark"><a href="{{ route('admin.inbox') }}">All</a> notification</li>
-               </ul>
-            </li>
-            <li class="onhover-dropdown">
-               <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle" src="../assets/images/dashboard/user.png" alt="{{ auth()->user()->name }}">
-                  <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
+>
+   <div class="flex justify-between items-center h-16 px-12">
+      <div>
+         <div class="relative w-64">
+            <div class="relative z-50">
+               <input
+                  type="text"
+                  class="block w-full py-2 pl-12 pr-4 bg-gray-200 rounded-full border border-transparent focus:bg-white focus:border-gray-300 focus:outline-none"
+               />
+               <div class="flex items-center absolute left-0 inset-y-0 pl-3">
+                  <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     class="h-6 w-6 fill-current text-gray-600"
+                  >
+                     <path
+                        d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
+                     ></path>
+                  </svg>
                </div>
-               <ul class="profile-dropdown onhover-show-div p-20">
-                  <li><a href="{{ route('admin.edit') }}"><i data-feather="user"></i>Edit Profile</a></li>
-                  <li><a href="{{ route('admin.inbox') }}"><i data-feather="mail"></i>Inbox</a></li>
-                  <li><a href="{{ route('admin.logout') }}"><i data-feather="log-out"></i>Logout</a></li>
-               </ul>
-            </li>
-         </ul>
-         <div class="d-lg-none mobile-toggle pull-right"><i data-feather="more-horizontal"></i></div>
-      </div>
-      <script id="result-template" type="text/x-handlebars-template">
-         <div class="ProfileCard u-cf">
-            <div class="ProfileCard-avatar">
-               {{ request()->user()->avatar ?? '' }}
             </div>
-            <div class="ProfileCard-details">
-               <div class="ProfileCard-realName">{{ request()->user()->username ?? '' }}</div>
+            <!---->
+            <!---->
+         </div>
+      </div>
+      <div class="flex items-center">
+
+         <div class="ml-6">
+            <!---->
+            <div class="relative">
+               <button type="button" class="block w-full focus:outline-none">
+                       <span class="flex items-center"
+                       ><img
+                             src="{{ auth()->user()->avatar_url }}"
+                             class="h-8 w-8 rounded-full"/>
+                         <span class="ml-3">{{ auth()->user()->username }}</span>
+                         <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            class="h-6 w-6 ml-2 text-gray-600"
+                         >
+                           <path
+                              d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
+                           ></path></svg
+                         ></span>
+               </button>
+               <!---->
             </div>
          </div>
-      </script>
-
+      </div>
    </div>
 </div>
-<!-- Page Header Ends -->
