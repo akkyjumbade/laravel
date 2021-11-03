@@ -25,6 +25,8 @@
 
    {{ $css ?? '' }}
 
+   <link rel="stylesheet" href="/assets/admin/main.css" />
+
 
    <script>
       // setup config from server
@@ -52,7 +54,7 @@
    {{ $scripts ?? '' }}
    @stack('js')
    <script src="@asset('admin/libs/alpinejs/alpinejs.min.js')"></script>
-   <script src="@asset('admin/js/script.js')"></script>
+   <script src="@asset('admin/main.js')"></script>
 </body>
 </html>
 

@@ -29,15 +29,15 @@ return [
       'system' => [
          [
             'label' => 'Customers',
-            'to' => route('admin.users.index')
+            'to' => route('admin.users.index', ['role' => 'customers'])
          ],
          [
             'label' => 'Vendors',
-            'to' => route('admin.users.index')
+            'to' => route('admin.users.index', ['role' => 'vendors'])
          ],
          [
             'label' => 'Drivers',
-            'to' => route('admin.users.index')
+            'to' => route('admin.users.index', ['role' => 'drivers'])
          ],
          [
             'label' => 'Roles',
