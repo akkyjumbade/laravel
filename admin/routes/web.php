@@ -24,6 +24,7 @@ Route::group([
    // Modules specific
 
    Route::resource('users', UserController::class);
+   Route::resource('users:{role}', UserController::class);
    Route::resource('roles', RoleController::class);
    Route::resource('permissions', PermissionController::class);
 });
