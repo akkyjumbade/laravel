@@ -2,12 +2,14 @@
 namespace Admin;
 
 use Admin\Components\Admin as AdminLayout;
+use Admin\Components\AdminForm;
 use Admin\Components\Header;
 use Admin\Components\Notice;
 use Admin\Components\ResourceHeader;
 use Admin\Components\Settings;
 use Admin\Components\Sidebar;
 use Admin\Components\Table;
+use Admin\Components\TextInput;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +35,8 @@ class AdminServiceProvider extends ServiceProvider {
       Blade::component('admin-resource-header', ResourceHeader::class);
       Blade::component('admin-notice', Notice::class);
       Blade::component('admin-settings', Settings::class);
+      Blade::component('admin-form', AdminForm::class);
+      Blade::component('admin-text-input', TextInput::class);
 
       // add the commands
       if ($this->app->runningInConsole() && config('admin.commands')) {

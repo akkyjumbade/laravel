@@ -16,6 +16,7 @@ class Permission extends Model
       'title',
       'code',
       'description',
+      'resource',
    ];
 
 }

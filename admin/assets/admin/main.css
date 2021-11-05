@@ -4,6 +4,20 @@
 .nav-item--has-action {
 
 }
-.nav-item--has-action:hover {
-   
+.nav-item__action {
+   display: none;
+}
+
+.nav-item--has-action:hover .nav-item__action {
+   display: block;
+}
+
+.input-container {
+   --height: 36px;
+   --border-color: var(--tw-ring-color);
+   height: var(--height);
+   border-color: var(--border-color);
+}
+.input-container:focus-within {
+   --border-color: rgba(55,65,81,var(--tw-ring-color));
 }

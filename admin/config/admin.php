@@ -7,6 +7,9 @@ return [
    'roles' => [
 
    ],
+   'commands' => [
+      \App\Console\Commands\CreateRoleCommand::class,
+   ],
    'view_components' => [
 
    ],

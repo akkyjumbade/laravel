@@ -29,9 +29,10 @@ class AdminCreateCommand extends Command
     */
    public function handle()
    {
-      $username = $this->ask('Username:');
-      $phone = $this->ask('Phone:');
-      $password = $this->ask('Password:');
+      $username = $this->ask('Username');
+      $phone = $this->ask('Phone');
+      $password = $this->ask('Password');
+      $role = $this->choice('Role', Role::get(['code', 'id'])->pluck('code')->toArray());
       try {
          $user = $this->createAdmin($username, $phone, $password);
          $this->info("Admin user created: {$user->name}");

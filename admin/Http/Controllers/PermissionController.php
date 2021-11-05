@@ -17,4 +17,41 @@ class PermissionController extends Controller
       ));
    }
 
+   function create() {
+      $model = new Permission();
+      return view('admin::permissions.create', compact(
+         'model'
+      ));
+   }
+   function store(Request $req) {
+      $req->validate([
+         'title' => ['required', 'unique:permissions'],
+         'code' => ['required', 'unique:permissions'],
+         'description' => ['required', ],
+         'resource' => ['required', ],
+      ]);
+      try {
+         $role = Permission::create([
+            'title' => $req->input('title'),
+            'code' => $req->input('code'),
+            'resource' => $req->input('resource'),
+            'description' => $req->input('description', $req->input('title')),
+         ]);
+         return response()->success([
+            'message' => __('Role created'),
+            'data' => $role
+         ]);
+      }catch (\Throwable $th) {
+         return response()->error([
+            'message' => $th->getMessage()
+         ]);
+      }
+   }
+   function edit(Request $req, Permission $permission) {
+      $model = $permission;
+      return view('admin::permissions.create', compact(
+         'model'
+      ));
+   }
+
 }

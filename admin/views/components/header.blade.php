@@ -41,7 +41,7 @@
                <button type="button" x-on:click="isOpen = !isOpen" class="block w-full focus:outline-none">
                        <span class="flex items-center"
                        ><img
-                             src="{{ auth()->user()->avatar_url }}"
+                             src="{{ auth()->user()->avatar }}"
                              class="h-8 w-8 rounded-full"/>
                          <span class="ml-3">{{ auth()->user()->username }}</span>
                          <svg
@@ -59,7 +59,7 @@
                <div x-show="isOpen" class="absolute bg-white p-3 w-full shadow-lg rounded-lg dropdown-menu">
                   <ul>
                      <li class="rounded-lg overflow-hidden">
-                        <a class="px-3 w-full flex py-1 hover:bg-gray-200" href="{{ route('admin.logout') }}">Logout</a>
+                        <a class="px-3 w-full flex py-1 hover:bg-gray-200" href="{{ route('admin.logout') }}">{{ __('Logout') }}</a>
                      </li>
                   </ul>
                </div>

@@ -11,8 +11,9 @@
          </p>
       </div>
       <div class="col-span-8">
-         <div class="bg-white rounded-lg shadow-sm min-h-full">
-            sdf
+         <div class="bg-white rounded-lg shadow-sm min-h-full p-3">
+            <x-admin-text-input name="title"></x-admin-text-input>
+            button
          </div>
       </div>
    </div>
