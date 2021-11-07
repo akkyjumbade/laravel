@@ -11,6 +11,9 @@ class DashboardController extends Controller
    function index() {
       return view('admin::index');
    }
+   function inbox() {
+      return view('admin::inbox');
+   }
    function logout() {
       \Auth::logout();
       return redirect()->to('/');

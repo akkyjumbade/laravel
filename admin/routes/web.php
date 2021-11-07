@@ -8,6 +8,7 @@ use \Admin\Http\Controllers\{
    PermissionController,
    CategoryController,
    SettingController,
+   StorageController,
 };
 
 Route::group([
@@ -23,6 +24,8 @@ Route::group([
    Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
    Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
    Route::get('settings', [SettingController::class, 'index'])->name('settings');
+   Route::get('storage', [StorageController::class, 'index'])->name('index');
+
    Route::resource('roles', RoleController::class);
    Route::resource('permissions', PermissionController::class);
    Route::resource('categories', CategoryController::class);

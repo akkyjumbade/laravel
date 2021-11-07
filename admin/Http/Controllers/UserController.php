@@ -25,8 +25,42 @@ class UserController extends Controller
          'users'
       ));
    }
-   function logout() {
-      \Auth::logout();
-      return redirect()->to('/');
+   function create() {
+      $user = new User;
+      return view('admin::users.create', compact(
+         'user'
+      ));
+   }
+
+   function store(Request $req) {
+      $req->validate([
+         'first_name' => ['required', 'max:200'],
+         'middle_name' => ['nullable', 'max:200'],
+         'last_name' => ['nullable', 'max:200'],
+         'username' => ['required', 'alpha_num', 'max:20', 'unique:users'],
+         'password' => ['required', 'min:6', 'max:20', ],
+         'phone' => ['nullable', 'digits:10', 'unique:users'],
+         'email' => ['nullable', 'email:rfc,dns', 'max:255', 'unique:users'],
+      ]);
+      try {
+         $user = User::create([
+            'first_name' => $req->input('first_name'),
+            'middle_name' => $req->input('middle_name'),
+            'last_name' => $req->input('last_name'),
+            'username' => $req->input('username'),
+            'phone' => $req->input('phone'),
+            'password' => $req->input('password'),
+            'email' => $req->input('email'),
+            'role_id' => $req->input('role_id'),
+         ]);
+         return response()->success([
+            'message' => __('User created'),
+            'data' => $user
+         ]);
+      }catch (\Throwable $th) {
+         return response()->error([
+            'message' => $th->getMessage()
+         ]);
+      }
    }
 }

@@ -7,11 +7,14 @@
                   {{ $attributes->get('title') }}
                </h1>
             </div>
+            @if ($attributes->get('subtitle'))
+               <p class="text-sm text-gray-600">
+                  {{ $attributes->get('subtitle') }}
+               </p>
+            @endif
          </div>
          <div>
-{{--            <a href="/app/team/settings/" class="text-sm text-gray-800 font-bold">--}}
-{{--               Team Settings--}}
-{{--            </a>--}}
+            {{ $slot }}
          </div>
       </div>
    </div>

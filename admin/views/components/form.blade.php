@@ -14,10 +14,10 @@
                </template>
             </ul>
          </div>
-         <button x-bind:disabled="isSubmitting"  x-bind:class="{ 'disabled is-submitting loading opacity-70': isSubmitting }" class="bg-white rounded-lg py-2 px-4 text-center">
+         <x-admin-button x-bind:disabled="isSubmitting"  x-bind:class="{ 'disabled is-submitting loading opacity-70': isSubmitting }" class="bg-white rounded-lg py-2 px-4 text-center">
             <span>Submit</span>
             <span x-show="isSubmitting">...</span>
-         </button>
+         </x-admin-button>
       </div>
    </form>
 </div>

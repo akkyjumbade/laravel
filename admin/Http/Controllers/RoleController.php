@@ -27,9 +27,14 @@ class RoleController extends Controller
       $req->validate([
          'title' => ['required', 'unique:roles'],
          'code' => ['required', 'unique:roles'],
+         'description' => ['nullable', 'max:255'],
       ]);
       try {
-         $role = Role::created($req->validated());
+         $role = Role::create([
+            'title' => $req->input('title'),
+            'code' => strtolower($req->input('code', $req->input('title'))),
+            'description' => $req->input('description', $req->input('title')),
+         ]);
          return response()->success([
             'message' => __('Role created'),
             'data' => $role

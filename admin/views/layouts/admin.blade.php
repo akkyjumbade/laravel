@@ -42,7 +42,13 @@
             <x-admin-header></x-admin-header>
             <div class="flex-grow flex flex-col">
                @if($attributes->get('resource'))
-               <x-admin-resource-header :resource="$attributes->get('resource')" :title="$attributes->get('title')"></x-admin-resource-header>
+               <x-admin-resource-header :resource="$attributes->get('resource')" :title="$attributes->get('title')" :subtitle="$attributes->get('subtitle')">
+                  @if(isset($toolbar))
+                     <div class="bg-white">
+                        {{$toolbar ?? ''}}
+                     </div>
+                  @endif
+               </x-admin-resource-header>
                @endif
                {{ $slot }}
             </div>

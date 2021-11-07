@@ -11,6 +11,18 @@ return [
       \App\Console\Commands\CreateRoleCommand::class,
    ],
    'view_components' => [
+      'admin' => \Admin\Components\Admin::class,
+      'sidebar' => \Admin\Components\Sidebar::class,
+      'header' => \Admin\Components\Header::class,
+      'resource-header' => \Admin\Components\ResourceHeader::class,
+      'table' => \Admin\Components\Table::class,
+      'notice' => \Admin\Components\Notice::class,
+      'settings' => \Admin\Components\Settings::class,
+      'form' => \Admin\Components\AdminForm::class,
+      'text-input' => \Admin\Components\TextInput::class,
+      'checkbox' => \Admin\Components\Checkbox::class,
+      'storage' => \Admin\Components\Storage::class,
+      'storage-item' => \Admin\Components\StorageItem::class,
 
    ],
    'menus' => [
@@ -49,6 +61,14 @@ return [
          [
             'label' => 'Permissions',
             'to' => route('admin.permissions.index')
+         ],
+         [
+            'label' => 'Storage',
+            'to' => url('admin/storage')
+         ],
+         [
+            'label' => 'Notifications',
+            'to' => url('admin/notifications')
          ],
          [
             'label' => 'Settings',
