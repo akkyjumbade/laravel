@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -21,5 +22,45 @@ class CategoryController extends Controller
          'categories'
       ));
    }
+   function create() {
+      $categories = Category::select(['id as value', 'title as label'])->get();
+      $category = new Category();
+      $category->title = 'newsdfsd';
+      return view('admin::categories.create', compact(
+         'categories', 'category'
+      ));
+   }
 
+   function store(Request $req) {
+      $req->validate([
+         'title' => ['required', 'unique:roles'],
+         'description' => ['nullable', 'max:255'],
+      ]);
+      try {
+         $category = Category::create([
+            'title' => $req->input('title'),
+            'slug' => Str::slug(strtolower($req->input('title'). time())),
+            'description' => $req->input('description', $req->input('title')),
+         ]);
+         return response()->success([
+            'message' => __('Category created'),
+            'data' => $category
+         ]);
+      }catch (\Throwable $th) {
+         return response()->error([
+            'message' => $th->getMessage()
+         ]);
+      }
+   }
+   function show(Category $category) {
+      return view('admin::categories.show', compact(
+         'category'
+      ));
+   }
+   function edit(Category $category) {
+      $categories = Category::select(['id as value', 'title as label'])->get();
+      return view('admin::categories.create', compact(
+         'categories', 'category'
+      ));
+   }
 }

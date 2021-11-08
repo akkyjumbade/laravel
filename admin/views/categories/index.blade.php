@@ -1,6 +1,6 @@
 <x-admin title="{{ __('categories') }}" :resource="[ 'path' => '/admin/categories', ]">
    <x-slot name="toolbar">
-      <a href="{{ url('/admin/categories', ['create',]) }}" class="btn">Create</a>
+      <x-admin-button onclick="location.href = '/admin/categories/create'">Create</x-admin-button>
    </x-slot>
    <x-admin-table :columns="['title', 'code', 'description', ]" :rows="$categories">
 
