@@ -39,7 +39,7 @@ class CreatePostRequirementsTable extends Migration
             $table->string('status')->default('draft');
             $table->unsignedBigInteger('posted_by_user_id')->nullable();
             $table->foreign('posted_by_user_id')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

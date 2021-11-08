@@ -32,7 +32,7 @@ class CreateResourcesTable extends Migration
          $table->foreignId('created_by_user_id')->nullable()->constrained('users');
          $table->softDeletes();
          $table->timestampTz('published_at')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

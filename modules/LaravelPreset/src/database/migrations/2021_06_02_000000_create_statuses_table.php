@@ -25,7 +25,7 @@ class CreateStatusesTable extends Migration
          $table->foreign('created_by_user_id')->references('id')->on('users');
          $table->unsignedBigInteger('updated_by_user_id')->nullable()->comment('updated by user id');
          $table->foreign('updated_by_user_id')->references('id')->on('users');
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

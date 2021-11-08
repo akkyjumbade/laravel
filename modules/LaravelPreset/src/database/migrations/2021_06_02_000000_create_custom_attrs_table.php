@@ -30,7 +30,7 @@ class CreateCustomAttrsTable extends Migration
          $table->foreign('custom_attr_id')->references('id')->on('custom_attrs');
          $table->unsignedBigInteger('custom_attrsable_id')->nullable();
          $table->string('custom_attrsable_type')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

@@ -21,7 +21,7 @@ class CreatePostRequirementInterestsTable extends Migration
             $table->foreign('interested_user_id')->references('id')->on('users');
             $table->string('status', )->default('pending');
             $table->timestampTz('accepted_at')->nullable();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

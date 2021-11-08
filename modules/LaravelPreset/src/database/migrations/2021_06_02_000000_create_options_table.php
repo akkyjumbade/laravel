@@ -29,7 +29,7 @@ class CreateOptionsTable extends Migration
          $table->boolean('is_autoload')->default(false);
          $table->unsignedBigInteger('option_id')->nullable()->comment('Self nested parent_id like');
          $table->foreign('option_id')->references('id')->on('options');
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

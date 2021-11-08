@@ -1,4 +1,17 @@
 {
    "address.saved": "Address saved.",
+   "roles": "Roles",
+   "permissions": "Permissions",
+   "users": "Users",
+   "categories": "Categories",
+   "vehicles": "Vehicles",
+   "admin": "Administrator",
+   "user": "User",
+   "role": "Role",
+   "password": "Password",
+   "description": "Description",
+   "RESOURCES": "RESOURCES",
+   "Logout": "Logout",
+   "bio": "Bio",
    "validation_failed": "Please check all required fields."
 }

@@ -12,84 +12,50 @@
    <link rel="icon" href="{{ asset('assets/favicon.png') }}" type="image/x-icon" />
    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}" type="image/x-icon" />
 
-   <title>{{ $title ?? config('app.name') }}</title>
-   <style>
-      :root {
-         --font-primary: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      }
-   </style>
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/fontawesome.css') }}">
-   <!-- ico-font-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/icofont.css') }}">
-   <!-- Themify icon-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/themify.css') }}">
-   <!-- Flag icon-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/flag-icon.css') }}">
-   <!-- Feather icon-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/feather-icon.css') }}">
-   <!-- Plugins css start-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/prism.css') }}">
-   <!-- Plugins css Ends-->
-   <!-- Bootstrap css-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/bootstrap.css') }}">
-   <link id="bootstrap-file" rel="stylesheet" type="text/css" href="#">
-   <!-- App css-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/style.css') }}">
-   <link id="color" rel="stylesheet" href="{{ asset('assets/admin/css/color-1.css') }}" media="screen">
-   <!-- Responsive css-->
-   <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/responsive.css') }}">
+   <title>{{ $title ?? config('admin.title', config('app.name')) }}</title>
+   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/assets/admin/main.css" />
+
+
    {{ $head ?? '' }}
+
+   {{ $css ?? '' }}
+   @stack('css')
+
+
    <script>
-      const admin = @json($layoutData);
-      const menus = @json($primaryMenu);
+      // setup config from server
+      const admin = <?php echo json_encode($layoutData ?? []) ?>;
+      const menus = <?php echo json_encode($primaryMenu ?? []) ?>;
    </script>
 </head>
-<body>
-   <!-- Loader starts-->
-   <div class="loader-wrapper">
-      <div class="loader bg-white">
-         <div class="whirly-loader"> </div>
-      </div>
-   </div>
-   <!-- Loader ends-->
-   <div id="root" class="page-wrapper">
-      {{ $header ?? '' }}
-      <div class="page-body-wrapper">
-         <x-admin-header></x-admin-header>
+<body  style="">
+   <div id="root" x-data="{ isExpandedSidebar: false }" class=" text-gray-900 antialiased">
+      <div class="min-h-screen flex bg-gray-200">
          <x-admin-sidebar></x-admin-sidebar>
-         <div class="page-body">
-            <div class="container-fluid">
+         <div class="flex-grow flex flex-col">
+            <x-admin-header></x-admin-header>
+            <div class="flex-grow flex flex-col">
+               @if($attributes->get('resource'))
+               <x-admin-resource-header :resource="$attributes->get('resource')" :title="$attributes->get('title')" :subtitle="$attributes->get('subtitle')">
+                  @if(isset($toolbar))
+                     <div class="bg-white">
+                        {{$toolbar ?? ''}}
+                     </div>
+                  @endif
+               </x-admin-resource-header>
+               @endif
                {{ $slot }}
             </div>
          </div>
       </div>
    </div>
+   <div class="vue-portal-target"></div>
+
    {{ $scripts ?? '' }}
    @stack('js')
    <script src="@asset('admin/libs/alpinejs/alpinejs.min.js')"></script>
-   <!-- latest jquery-->
-   <script src="@asset('admin/js/jquery-3.2.1.min.js')"></script>
-   <!-- Bootstrap js-->
-   <script src="@asset('admin/js/bootstrap/bootstrap.bundle.min.js')"></script>
-   <!-- feather icon js-->
-   <script src="@asset('admin/js/icons/feather-icon/feather.min.js')"></script>
-   <script src="@asset('admin/js/icons/feather-icon/feather-icon.js')"></script>
-   <!-- Sidebar jquery-->
-   <script src="@asset('admin/js/sidebar-menu.js')"></script>
-   <script src="@asset('admin/js/config.js')"></script>
-   <!-- Plugins JS start-->
-   <script src="@asset('admin/js/prism/prism.min.js')"></script>
-   <script src="@asset('admin/js/clipboard/clipboard.min.js')"></script>
-   <script src="@asset('admin/js/custom-card/custom-card.js')"></script>
-   <script src="@asset('admin/js/typeahead/handlebars.js')"></script>
-   <script src="@asset('admin/js/typeahead/typeahead.bundle.js')"></script>
-   <script src="@asset('admin/js/typeahead/typeahead.custom.js')"></script>
-   <script src="@asset('admin/js/chat-menu.js')"></script>
-   <script src="@asset('admin/js/tooltip-init.js')"></script>
-   <script src="@asset('admin/js/typeahead-search/handlebars.js')"></script>
-   <script src="@asset('admin/js/typeahead-search/typeahead-custom.js')"></script>
-   <!-- Theme js-->
-   <script src="@asset('admin/js/script.js')"></script>
+   <script src="@asset('admin/main.js')"></script>
 </body>
 </html>
 

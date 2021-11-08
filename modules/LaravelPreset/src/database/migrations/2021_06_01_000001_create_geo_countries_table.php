@@ -34,7 +34,7 @@ class CreateGeoCountriesTable extends Migration
          $table->string('latitude')->nullable();
          $table->string('longitude')->nullable();
          $table->longText('options')->comment('Use api params or any')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

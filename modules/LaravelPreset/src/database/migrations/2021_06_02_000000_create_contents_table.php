@@ -28,7 +28,7 @@ class CreateContentsTable extends Migration
          $table->foreign('created_by_user_id')->references('id')->on('users');
          $table->timestampTz('published_at')->nullable();
          $table->softDeletes();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

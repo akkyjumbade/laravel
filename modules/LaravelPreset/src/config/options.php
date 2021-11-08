@@ -15,15 +15,19 @@ return [
    'default_country' => env('DEFAULT_COUNTRY', 'IN'),
    'default_currency' => env('DEFAULT_CURRENCY', 'INR'),
 
+   // Logo
+   'navicon_url' => env('NAVICON_URL', '/assets/logos/navicon.png'),
+   'favicon_url' => env('FAVICON_URL', '/assets/logos/favicon.png'),
+
    /* Database seeders */
    'db_seeders' => array(
+      \Database\Seeders\OptionsTableSeeder::class,
       \Database\Seeders\RolesTableSeeder::class,
       \Database\Seeders\PermissionsTableSeeder::class,
       \Database\Seeders\UsersTableSeeder::class,
       \Database\Seeders\GeoCountriesTableSeeder::class,
       \Database\Seeders\GeoProvincesTableSeeder::class,
       \Database\Seeders\GeoCitiesTableSeeder::class,
-
    ),
 
    /* Repositories */
@@ -39,6 +43,7 @@ return [
 
    /* Console commands to register in service provider */
    'commands' => [
+      \Modules\LaravelPreset\Console\Commands\LocaleUpdatePackageCommand::class,
       SetupCommand::class,
       AdminExportCommand::class,
       \Modules\LaravelPreset\Console\Commands\AdminCreateCommand::class,

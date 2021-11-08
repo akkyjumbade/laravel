@@ -30,7 +30,7 @@ class CreateUserAttrsTable extends Migration
          $table->bigInteger('order_index')->nullable();
          $table->longText('extra')->nullable();
          $table->boolean('is_autoload')->default(false);
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \Admin\Http\Controllers\{
+   DashboardController,
+   UserController,
+   RoleController,
+   PermissionController,
+   CategoryController,
+   SettingController,
+   StorageController,
+   BroadcastController,
+};
 
 Route::group([
    'prefix' => 'admin',
@@ -9,13 +19,18 @@ Route::group([
       'web', 'auth'
    ]
 ], function () {
-   Route::get('/', [\Admin\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-   Route::get('/profile', [\Admin\Http\Controllers\DashboardController::class, 'profile'])->name('profile');
-   Route::get('/inbox', [\Admin\Http\Controllers\DashboardController::class, 'inbox'])->name('inbox');
-   Route::get('/edit', [\Admin\Http\Controllers\DashboardController::class, 'editProfile'])->name('edit');
-   Route::get('/logout', [\Admin\Http\Controllers\DashboardController::class, 'logout'])->name('logout');
+   Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+   Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+   Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
+   Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
+   Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
+   Route::get('settings', [SettingController::class, 'index'])->name('settings');
+   Route::get('storage', [StorageController::class, 'index'])->name('index');
+   Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
 
-   // Modules specific
+   Route::resource('roles', RoleController::class);
+   Route::resource('permissions', PermissionController::class);
+   Route::resource('categories', CategoryController::class);
+   Route::resource('users', UserController::class);
 
-   Route::resource('users', \Admin\Http\Controllers\UserController::class);
 });

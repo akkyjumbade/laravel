@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class Sidebar extends Component
 {
    public $menus;
+   public $resources;
    /**
     * Create a new component instance.
     *
@@ -14,12 +15,8 @@ class Sidebar extends Component
     */
    public function __construct()
    {
-      $this->menus = [
-         [
-            'label' => 'Users',
-            'to' => route('admin.users.index')
-         ]
-      ];
+      $this->menus = config('admin.menus.system');
+      $this->resources = [];
    }
 
    /**

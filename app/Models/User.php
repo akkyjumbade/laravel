@@ -83,6 +83,6 @@ class User extends Authenticatable  implements JWTSubject
       if ($value) {
          return url($value);
       }
-      return $value;
+      return "https://gravatar.com/avatar/bcbab1705da3795a0a8ccd415b7f79da?s=400";
    }
 }

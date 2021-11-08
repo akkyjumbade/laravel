@@ -26,7 +26,7 @@ class CreateSubscribersTable extends Migration
          $table->string('topic')->nullable();
          $table->string('list')->default('newsletter')->nullable();
          $table->foreignId('user_id')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

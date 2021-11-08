@@ -1,11 +1,25 @@
 <?php
 namespace Admin;
 
+
 use Admin\Components\Admin as AdminLayout;
+use Admin\Components\AdminForm;
+use Admin\Components\Button;
+use Admin\Components\Checkbox;
 use Admin\Components\Header;
+use Admin\Components\Notice;
+use Admin\Components\Radio;
+use Admin\Components\ResourceHeader;
+use Admin\Components\Select;
+use Admin\Components\Settings;
 use Admin\Components\Sidebar;
+use Admin\Components\Storage;
+use Admin\Components\StorageItem;
 use Admin\Components\Table;
-use Illuminate\Routing\Route;
+use Admin\Components\TextInput;
+use Admin\Components\PasswordInput;
+use Admin\Components\ImageInput;
+use Admin\Components\Toggle;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
@@ -27,11 +41,27 @@ class AdminServiceProvider extends ServiceProvider {
       Blade::component('admin-sidebar', Sidebar::class);
       Blade::component('admin-header', Header::class);
       Blade::component('admin-table', Table::class);
+      Blade::component('admin-resource-header', ResourceHeader::class);
+      Blade::component('admin-notice', Notice::class);
+      Blade::component('admin-settings', Settings::class);
+      Blade::component('admin-form', AdminForm::class);
+      Blade::component('admin-text-input', TextInput::class);
+      Blade::component('admin-password-input', PasswordInput::class);
+      Blade::component('admin-image-input', ImageInput::class);
+      Blade::component('admin-storage', Storage::class);
+      Blade::component('admin-checkbox', Checkbox::class);
+      Blade::component('admin-storage-item', StorageItem::class);
+      Blade::component('admin-button', Button::class);
+      Blade::component('admin-toggle', Toggle::class);
+      Blade::component('admin-select', Select::class);
+      Blade::component('admin-radio', Radio::class);
+
 
       // add the commands
       if ($this->app->runningInConsole() && config('admin.commands')) {
          $this->commands(config('admin.commands'));
       }
+
       Blade::if('role', function (array $value = []) {
          $roleCode = auth()->user()->role->code;
          return in_array($roleCode, $value);

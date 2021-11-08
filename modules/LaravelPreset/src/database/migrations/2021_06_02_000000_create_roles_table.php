@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration
          $table->string('title');
          $table->string('code')->unique();
          $table->string('description');
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

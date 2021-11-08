@@ -23,7 +23,7 @@ class CreateActivityLogsTable extends Migration
          $table->longText('session_data')->nullable();
          $table->integer('attempts')->default(0);
          $table->string('flag')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

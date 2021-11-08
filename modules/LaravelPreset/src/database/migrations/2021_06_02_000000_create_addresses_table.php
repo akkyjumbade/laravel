@@ -35,7 +35,7 @@ class CreateAddressesTable extends Migration
          $table->string('longitude')->nullable();
          $table->unsignedBigInteger('addressesable_id')->nullable();
          $table->string('addressesable_type')->nullable();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

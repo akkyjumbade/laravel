@@ -20,7 +20,7 @@ class CreateTagsTable extends Migration
          $table->string('taggable_type')->nullable();
          $table->unsignedBigInteger('created_by_user_id')->nullable()->comment('Created by user id');
          $table->foreign('created_by_user_id')->references('id')->on('users');
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

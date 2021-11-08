@@ -34,7 +34,7 @@ class CreateNavigationTable extends Migration
          $table->foreign('created_by_user_id')->references('id')->on('users');
          $table->unsignedBigInteger('order_index')->nullable()->comment('Order index');
          $table->boolean('is_autoload')->default(false);
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

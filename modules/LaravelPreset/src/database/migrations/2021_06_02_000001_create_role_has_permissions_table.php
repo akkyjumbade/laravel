@@ -17,7 +17,7 @@ class CreateRoleHasPermissionsTable extends Migration
          $table->id();
          $table->foreignId('role_id')->nullable()->constrained('roles');
          $table->foreignId('permission_id')->nullable()->constrained('permissions');
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

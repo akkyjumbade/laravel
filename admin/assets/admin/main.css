@@ -1,0 +1,33 @@
+/*Admin CSS Only*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+
+:root {
+   --font-primary: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+   --font-primary: Lato;
+}
+body, #root {
+   font-family: var(--font-primary);
+   letter-spacing: 0;
+}
+h1, h2, h3, h4 {
+   letter-spacing: -1px;
+   font-weight: 900 !important;
+}
+
+.nav-item--has-action {
+
+}
+.nav-item__action {
+   display: none;
+}
+
+.nav-item--has-action:hover .nav-item__action {
+   display: block;
+}
+
+.input-container {
+   --height: 36px;
+   --border-color: var(--tw-ring-color);
+   height: var(--height);
+}
