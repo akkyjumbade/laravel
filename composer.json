@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "akkyjumbade/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The Laravel Framework with customized.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
