@@ -12,10 +12,11 @@
       </div>
       <div>
          <div class="relative md:w-64">
-            <div class="relative z-50">
+            <div class="relative z-50 ">
+{{--               <x-admin-text-input></x-admin-text-input>--}}
                <input
                   type="text"
-                  class="block w-full py-2 pl-12 pr-4 bg-gray-200 rounded-full border border-transparent focus:bg-white focus:border-gray-300 focus:outline-none"
+                  class="block w-full focus:ring-2 focus:ring-gray-600 py-2 pl-12 pr-4 bg-gray-200 rounded-full border border-transparent focus:bg-white focus:border-gray-300 focus:outline-none"
                />
                <div class="flex items-center absolute left-0 inset-y-0 pl-3">
                   <svg

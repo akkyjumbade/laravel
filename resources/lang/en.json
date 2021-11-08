@@ -7,7 +7,11 @@
    "vehicles": "Vehicles",
    "admin": "Administrator",
    "user": "User",
+   "role": "Role",
+   "password": "Password",
+   "description": "Description",
    "RESOURCES": "RESOURCES",
    "Logout": "Logout",
+   "bio": "Bio",
    "validation_failed": "Please check all required fields."
 }

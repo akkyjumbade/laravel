@@ -34,9 +34,9 @@ class UserController extends Controller
 
    function store(Request $req) {
       $req->validate([
-         'first_name' => ['required', 'max:200'],
-         'middle_name' => ['nullable', 'max:200'],
-         'last_name' => ['nullable', 'max:200'],
+         'first_name' => ['required', 'alpha_num', 'max:200'],
+         'middle_name' => ['nullable', 'alpha_num', 'max:200'],
+         'last_name' => ['nullable', 'alpha_num', 'max:200'],
          'username' => ['required', 'alpha_num', 'max:20', 'unique:users'],
          'password' => ['required', 'min:6', 'max:20', ],
          'phone' => ['nullable', 'digits:10', 'unique:users'],

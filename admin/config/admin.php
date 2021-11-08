@@ -7,6 +7,13 @@ return [
    'roles' => [
 
    ],
+   'events' => [
+      \Admin\Events\ActivityEvent::class
+   ],
+   'listeners' => [
+      \Admin\Listeners\ActivityEventListener::class
+   ],
+
    'commands' => [
       \App\Console\Commands\CreateRoleCommand::class,
    ],

@@ -1,4 +1,4 @@
-<x-admin>
+<x-admin title="Settings" :resource="[ 'path' => '/admin/settings' ]" subtitle="Manage settings">
    <x-slot name="scripts">
       <script>
          const options = @json($options)

@@ -13,19 +13,14 @@
    <link rel="shortcut icon" href="{{ asset('assets/favicon.png') }}" type="image/x-icon" />
 
    <title>{{ $title ?? config('admin.title', config('app.name')) }}</title>
-   <style>
-      :root {
-         --font-primary: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      }
-   </style>
    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/assets/admin/main.css" />
 
 
    {{ $head ?? '' }}
 
    {{ $css ?? '' }}
 
-   <link rel="stylesheet" href="/assets/admin/main.css" />
 
 
    <script>
@@ -34,8 +29,8 @@
       const menus = <?php echo json_encode($primaryMenu ?? []) ?>;
    </script>
 </head>
-<body class="font-sans" style="">
-   <div id="root" x-data="{ isExpandedSidebar: false }" class="font-sans text-gray-900 antialiased">
+<body  style="">
+   <div id="root" x-data="{ isExpandedSidebar: false }" class=" text-gray-900 antialiased">
       <div class="min-h-screen flex bg-gray-200">
          <x-admin-sidebar></x-admin-sidebar>
          <div class="flex-grow flex flex-col">

@@ -8,7 +8,9 @@ use Admin\Components\Button;
 use Admin\Components\Checkbox;
 use Admin\Components\Header;
 use Admin\Components\Notice;
+use Admin\Components\Radio;
 use Admin\Components\ResourceHeader;
+use Admin\Components\Select;
 use Admin\Components\Settings;
 use Admin\Components\Sidebar;
 use Admin\Components\Storage;
@@ -16,6 +18,7 @@ use Admin\Components\StorageItem;
 use Admin\Components\Table;
 use Admin\Components\TextInput;
 use Admin\Components\PasswordInput;
+use Admin\Components\ImageInput;
 use Admin\Components\Toggle;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -44,11 +47,14 @@ class AdminServiceProvider extends ServiceProvider {
       Blade::component('admin-form', AdminForm::class);
       Blade::component('admin-text-input', TextInput::class);
       Blade::component('admin-password-input', PasswordInput::class);
+      Blade::component('admin-image-input', ImageInput::class);
       Blade::component('admin-storage', Storage::class);
       Blade::component('admin-checkbox', Checkbox::class);
       Blade::component('admin-storage-item', StorageItem::class);
       Blade::component('admin-button', Button::class);
       Blade::component('admin-toggle', Toggle::class);
+      Blade::component('admin-select', Select::class);
+      Blade::component('admin-radio', Radio::class);
 
 
       // add the commands

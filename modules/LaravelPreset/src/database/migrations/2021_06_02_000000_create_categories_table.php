@@ -34,7 +34,7 @@ class CreateCategoriesTable extends Migration
          $table->foreignId('created_by_user_id')->nullable()->constrained('users');
          $table->timestampTz('published_at')->nullable();
          $table->softDeletes();
-         $table->timestamps();
+         $table->timestampsTz();
       });
    }
 

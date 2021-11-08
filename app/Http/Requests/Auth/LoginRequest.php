@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Auth;
 
+use Admin\Events\ActivityEvent;
+use App\Models\ActivityLog;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +54,8 @@ class LoginRequest extends FormRequest
                 'username' => __('auth.failed'),
             ]);
         }
+
+        event(new ActivityEvent(auth()->user(), ActivityLog::ACTION_LOGIN));
 
         RateLimiter::clear($this->throttleKey());
     }

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityLog extends Model
 {
+   const ACTION_LOGIN = 'login';
+   const ACTION_LOGOUT = 'logout';
+   const ACTION_REGISTER = 'register';
+   const ACTION_PASSWORD_REQUESTED = 'password-requested';
 
    /**
     * The attributes that are mass assignable.
