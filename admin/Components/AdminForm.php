@@ -8,15 +8,17 @@ class AdminForm extends Component
 {
    public $path;
    public $method;
+   public $initialValues;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct($path, $method = 'POST')
+   public function __construct($path, $method = 'POST', array $initialValues = [])
    {
       $this->path = $path;
       $this->method = $method;
+      $this->initialValues = $initialValues;
    }
 
    /**

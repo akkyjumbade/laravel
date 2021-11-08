@@ -9,6 +9,7 @@ use \Admin\Http\Controllers\{
    CategoryController,
    SettingController,
    StorageController,
+   BroadcastController,
 };
 
 Route::group([
@@ -25,6 +26,7 @@ Route::group([
    Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
    Route::get('settings', [SettingController::class, 'index'])->name('settings');
    Route::get('storage', [StorageController::class, 'index'])->name('index');
+   Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
 
    Route::resource('roles', RoleController::class);
    Route::resource('permissions', PermissionController::class);

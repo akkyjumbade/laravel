@@ -66,7 +66,7 @@
 <script>
    const formComponent = () => {
       return {
-         values: {},
+         values: @json($initialValues ?? []),
          errors: {},
          isSubmitting: false,
          async handleSubmit(formEl) {

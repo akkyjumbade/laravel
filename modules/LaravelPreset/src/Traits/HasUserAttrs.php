@@ -2,6 +2,20 @@
 namespace Modules\LaravelPreset\Traits;
 
 trait HasUserAttrs {
+   function getFullNameAttribute() {
+      return implode(' ', [
+         $this->first_name,
+         $this->middle_name,
+         $this->last_name,
+      ]);
+   }
+   function getNameAttribute($value) {
+      return implode(' ', [
+         $this->first_name,
+         $this->middle_name,
+         $this->last_name,
+      ]);
+   }
    function attrs() {
       return $this->morphMany(
          \App\Models\UserAttr::class,

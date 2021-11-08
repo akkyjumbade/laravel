@@ -20,7 +20,7 @@
    {{ $head ?? '' }}
 
    {{ $css ?? '' }}
-
+   @stack('css')
 
 
    <script>
