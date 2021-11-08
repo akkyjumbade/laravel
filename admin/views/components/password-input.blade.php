@@ -9,7 +9,7 @@
          @endif
       </label>
    @endif
-   <div class="input-container bg-white border border-gray-300 flex focus-within:ring-2 focus-within:ring-gray-600 focus-within:shadow-outline input-container leading-normal px-2 rounded-xl" x-bind:class="{ 'has-error border-red-600 focus-within:ring-red-600': errors.{{ $attributes->get('name') }} }" />
+   <div class="input-container bg-white border border-gray-300 flex focus-within:ring-2 focus-within:border-gray-600 focus-within:ring-gray-600 focus-within:shadow-outline input-container leading-normal px-2 rounded-xl" x-bind:class="{ 'has-error border-red-600 focus-within:ring-red-600': errors.{{ $attributes->get('name') }} }" />
       <input :type="togglePassword ? 'text' : 'password'" x-model="password" @keydown="checkPasswordStrength()" {{ $attributes->merge(['class' => 'bg-transparent w-full focus:outline-none appearance-none']) }} />
       <div class=" right-0 bottom-0 top-0 px-3 py-1 cursor-pointer"
            @click="togglePassword = !togglePassword"

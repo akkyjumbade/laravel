@@ -3,6 +3,7 @@
 namespace Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -27,8 +28,9 @@ class UserController extends Controller
    }
    function create() {
       $user = new User;
+      $roles = Role::select(['id as value', 'title as label'])->get()->toArray();
       return view('admin::users.create', compact(
-         'user'
+         'user', 'roles'
       ));
    }
 
@@ -41,15 +43,16 @@ class UserController extends Controller
          'password' => ['required', 'min:6', 'max:20', ],
          'phone' => ['nullable', 'digits:10', 'unique:users'],
          'email' => ['nullable', 'email:rfc,dns', 'max:255', 'unique:users'],
+         'role_id' => ['required', 'numeric',]
       ]);
       try {
          $user = User::create([
             'first_name' => $req->input('first_name'),
             'middle_name' => $req->input('middle_name'),
             'last_name' => $req->input('last_name'),
-            'username' => $req->input('username'),
-            'phone' => $req->input('phone'),
-            'password' => $req->input('password'),
+            'username' => $req->input('username', $req->input('phone')),
+            'phone' => $req->input('phone', $req->input('username')),
+            'password' => bcrypt($req->input('password')),
             'email' => $req->input('email'),
             'role_id' => $req->input('role_id'),
          ]);

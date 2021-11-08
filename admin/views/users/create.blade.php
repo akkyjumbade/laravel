@@ -11,9 +11,8 @@
          <x-admin-text-input error="errors.username" name="username" label="{{ __('Username') }}"></x-admin-text-input>
          <x-admin-password-input :showMeter="true" error="errors.password" name="password" type="password" label="{{ __('password') }}"></x-admin-password-input>
          <x-admin-image-input name="avatar" error="errors.avatar" label="{{ __('Avatar') }}" ></x-admin-image-input>
-         <x-admin-select error="errors.role" name="role" :required="true" label="{{ __('role') }}"></x-admin-select>
+         <x-admin-select error="errors.role_id" name="role_id" :options="$roles" :required="true" label="{{ __('role') }}"></x-admin-select>
          <x-admin-radio name="gender" label="Gender" :options="[ [ 'label' => 'Male', 'value' => 'male'], [ 'label' => 'Female', 'value' => 'female'] ]"></x-admin-radio>
-
          <x-admin-text-input error="errors.description" name="description" label="{{ __('bio') }}"></x-admin-text-input>
       </x-admin-form>
    </div>
