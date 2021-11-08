@@ -17,6 +17,11 @@ return [
    'commands' => [
       \App\Console\Commands\CreateRoleCommand::class,
    ],
+   'broadcast_channels' => [
+      'push_notification',
+      //'sms',
+      'email'
+   ],
    'view_components' => [
       'admin' => \Admin\Components\Admin::class,
       'sidebar' => \Admin\Components\Sidebar::class,
@@ -62,6 +67,10 @@ return [
             'to' => route('admin.users.index', ['role' => 'drivers'])
          ],
          [
+            'label' => 'All users',
+            'to' => route('admin.users.index')
+         ],
+         [
             'label' => 'Roles',
             'to' => route('admin.roles.index')
          ],
@@ -74,8 +83,8 @@ return [
             'to' => url('admin/storage')
          ],
          [
-            'label' => 'Notifications',
-            'to' => url('admin/notifications')
+            'label' => 'Broadcast',
+            'to' => url('admin/broadcast')
          ],
          [
             'label' => 'Settings',

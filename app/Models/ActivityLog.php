@@ -33,4 +33,11 @@ class ActivityLog extends Model
       'session_data' => 'array',
    ];
 
+   function user() {
+      return $this->belongsTo(
+         User::class,
+         'performed_by_user_id'
+      );
+   }
+
 }
