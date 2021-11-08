@@ -1,5 +1,5 @@
-<x-admin title="User {{ $role->title }}" :resource="[]">
+<x-admin title="User {{ $permission->title }}" :resource="[]">
    <div class="p-4">
-      @dump($role)
+      @dump($permission)
    </div>
 </x-admin>
