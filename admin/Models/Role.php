@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class Role extends Model
 {
 
    /**
@@ -16,7 +16,14 @@ class Permission extends Model
       'title',
       'code',
       'description',
-      'resource',
+      'parent_id',
+      'is_active',
+      'is_readonly',
    ];
 
+   function permissions() {
+      return $this->belongsToMany(
+         Permission::class,
+      );
+   }
 }

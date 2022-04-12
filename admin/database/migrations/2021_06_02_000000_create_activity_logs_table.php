@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivityLogsTable extends Migration
+return new class extends Migration
 {
    /**
     * Run the migrations.
@@ -19,7 +20,7 @@ class CreateActivityLogsTable extends Migration
          $table->string('intent')->nullable();
          $table->longText('request')->nullable();
          $table->longText('payload')->comment('All data while performed action')->nullable();
-         $table->foreignId('performed_by_user_id')->constrained('users');
+         $table->foreignIdFor(User::class, 'actor_user_id')->nullOnDelete();
          $table->longText('session_data')->nullable();
          $table->integer('attempts')->default(0);
          $table->string('flag')->nullable();
@@ -36,4 +37,4 @@ class CreateActivityLogsTable extends Migration
    {
       Schema::dropIfExists('activity_logs');
    }
-}
+};

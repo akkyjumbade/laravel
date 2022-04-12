@@ -1,10 +1,12 @@
 <?php
 
+use Admin\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+return new class extends Migration
 {
    /**
     * Run the migrations.
@@ -15,13 +17,17 @@ class CreateTagsTable extends Migration
    {
       Schema::create('tags', function (Blueprint $table) {
          $table->id();
-         $table->string('text')->nullable();
-         $table->unsignedBigInteger('taggable_id')->nullable();
-         $table->string('taggable_type')->nullable();
-         $table->unsignedBigInteger('created_by_user_id')->nullable()->comment('Created by user id');
-         $table->foreign('created_by_user_id')->references('id')->on('users');
+         $table->string('name')->nullable();
+         $table->foreignIdFor(User::class, 'user_id');
          $table->timestampsTz();
       });
+      Schema::create('taggables', function (Blueprint $table) {
+         $table->id();
+         $table->foreignIdFor(Tag::class);
+         $table->morphs('taggable');
+         $table->timestampsTz();
+      });
+
    }
 
    /**
@@ -31,6 +37,7 @@ class CreateTagsTable extends Migration
     */
    public function down()
    {
+      Schema::dropIfExists('taggables');
       Schema::dropIfExists('tags');
    }
-}
+};

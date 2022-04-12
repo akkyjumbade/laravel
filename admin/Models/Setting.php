@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Option extends Model
+class Setting extends Model
 {
 
    /**
@@ -13,7 +13,7 @@ class Option extends Model
     * @var array
     */
    protected $fillable = [
-      'var',
+      'name',
       'type',
       'label',
       'data_type',
@@ -22,14 +22,8 @@ class Option extends Model
       'output_component',
       'is_autoload',
    ];
-   protected $appends = ['tags'];
    protected $casts = [
       'is_autoload' => 'boolean'
    ];
-   function getTagsAttribute($value) {
-      if ($value) {
-         return $value;
-      }
-      return 'general';
-   }
+
 }

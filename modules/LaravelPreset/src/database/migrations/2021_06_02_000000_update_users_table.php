@@ -1,5 +1,7 @@
 <?php
 
+use Admin\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,55 +26,49 @@ class UpdateUsersTable extends Migration
          if (!Schema::hasColumn('users', 'last_name')) {
             $table->string('last_name')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'uuid')) {
+         if (!Schema::hasColumn($table->getTable(), 'uuid')) {
             $table->string('uuid')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'bio')) {
+         if (!Schema::hasColumn($table->getTable(), 'bio')) {
             $table->string('bio')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'phone')) {
+         if (!Schema::hasColumn($table->getTable(), 'phone')) {
             $table->string('phone')->nullable();
             $table->timestampTz('phone_verified_at')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'birth_date')) {
+         if (!Schema::hasColumn($table->getTable(), 'birth_date')) {
             $table->date('birth_date')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'gender')) {
+         if (!Schema::hasColumn($table->getTable(), 'gender')) {
             $table->string('gender')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'avatar')) {
+         if (!Schema::hasColumn($table->getTable(), 'avatar')) {
             $table->string('avatar')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'website')) {
+         if (!Schema::hasColumn($table->getTable(), 'website')) {
             $table->string('website')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'country')) {
+         if (!Schema::hasColumn($table->getTable(), 'country')) {
             $table->string('country')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'region')) {
+         if (!Schema::hasColumn($table->getTable(), 'region')) {
             $table->string('region')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'locale')) {
+         if (!Schema::hasColumn($table->getTable(), 'locale')) {
             $table->string('locale')->default('en');
          }
-         if (!Schema::hasColumn($this->tableName, 'timezone')) {
+         if (!Schema::hasColumn($table->getTable(), 'timezone')) {
             $table->string('timezone')->default('en');
          }
-         if (!Schema::hasColumn($this->tableName, 'status')) {
-            $table->string('status')->nullable();
-         }
-         if (!Schema::hasColumn($this->tableName, 'username')) {
+         if (!Schema::hasColumn($table->getTable(), 'username')) {
             $table->string('username')->unique();
          }
-         if (!Schema::hasColumn($this->tableName, 'last_login_at')) {
+         if (!Schema::hasColumn($table->getTable(), 'last_login_at')) {
             $table->timestampTz('last_login_at')->nullable();
          }
-         if (!Schema::hasColumn($this->tableName, 'role_id')) {
-            $table->foreignId('role_id')->constrained('roles');
-         }
-         if (!Schema::hasColumn($this->tableName, 'refferal_code')) {
+         if (!Schema::hasColumn($table->getTable(), 'refferal_code')) {
             $table->string('refferal_code')->nullable();
-            $table->foreignId('reffered_user_id')->nullable()->constrained($this->tableName);
+            $table->foreignIdFor(User::class, 'reffered_user_id')->nullable()->constrained($table->getTable());
          }
       });
    }

@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+return new class extends Migration
 {
    /**
     * Run the migrations.
@@ -15,7 +16,7 @@ class CreateSessionsTable extends Migration
    {
       Schema::create('sessions', function (Blueprint $table) {
          $table->string('id')->primary();
-         $table->foreignId('user_id')->nullable()->index();
+         $table->foreignIdFor(User::class)->nullable();
          $table->string('ip_address', 45)->nullable();
          $table->text('user_agent')->nullable();
          $table->text('payload');
@@ -32,4 +33,4 @@ class CreateSessionsTable extends Migration
    {
       Schema::dropIfExists('sessions');
    }
-}
+};
