@@ -3,8 +3,8 @@
 namespace Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Permission;
-use App\Models\Role;
+use Admin\Models\Permission;
+use Admin\Models\Role;
 use Illuminate\Validation\Rule;
 
 use Illuminate\Http\Request;

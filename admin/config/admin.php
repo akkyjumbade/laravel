@@ -1,5 +1,7 @@
 <?php
 
+use Admin\Console\Commands\AdminSetupCommand;
+
 return [
    'title' => 'Admin Dashboard',
    'navicon_url' => '',
@@ -16,6 +18,7 @@ return [
 
    'commands' => [
       \App\Console\Commands\CreateRoleCommand::class,
+      AdminSetupCommand::class,
    ],
    'broadcast_channels' => [
       'push_notification',
@@ -23,18 +26,6 @@ return [
       'email'
    ],
    'view_components' => [
-      'admin' => \Admin\Components\Admin::class,
-      'sidebar' => \Admin\Components\Sidebar::class,
-      'header' => \Admin\Components\Header::class,
-      'resource-header' => \Admin\Components\ResourceHeader::class,
-      'table' => \Admin\Components\Table::class,
-      'notice' => \Admin\Components\Notice::class,
-      'settings' => \Admin\Components\Settings::class,
-      'form' => \Admin\Components\AdminForm::class,
-      'text-input' => \Admin\Components\TextInput::class,
-      'checkbox' => \Admin\Components\Checkbox::class,
-      'storage' => \Admin\Components\Storage::class,
-      'storage-item' => \Admin\Components\StorageItem::class,
 
    ],
    'menus' => [

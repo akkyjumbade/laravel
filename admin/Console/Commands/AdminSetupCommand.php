@@ -1,8 +1,9 @@
 <?php
 
-namespace Modules\LaravelPreset\Console\Commands;
+namespace Admin\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminSetupCommand extends Command
 {
@@ -38,10 +39,10 @@ class AdminSetupCommand extends Command
    public function handle()
    {
       $action = $this->argument('action');
-      // if
-      // if (!$this->confirm('Did you commit your changes before setup? If not please do git commit.')) {
-      //    return 0;
-      // }
+
+      if (!$this->confirm('Did you commit your changes before setup? If not please do git commit.')) {
+         return 0;
+      }
       $this->info('Creating admin setup...');
 
       $stages = [
@@ -62,7 +63,7 @@ class AdminSetupCommand extends Command
             $progressBar->advance();
          }
       }
-      \Artisan::call('migrate:status');
+      Artisan::call('migrate:status');
 
       $progressBar->finish();
 
@@ -82,7 +83,7 @@ class AdminSetupCommand extends Command
 
    function exportAdminAssets() {
       try {
-         \Artisan::call('vendor:publish', [
+         Artisan::call('vendor:publish', [
             '--tag' => 'admin-setup'
          ]);
       } catch (\Throwable $th) {
