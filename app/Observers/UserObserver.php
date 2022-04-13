@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use Admin\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -26,18 +27,13 @@ class UserObserver
             $user->first_name = $user->username;
          }
       }
-      if (!$user->status) {
-         $user->status = config('options.default_user_status', 'active');
-      }
       if (!$user->uuid) {
          $user->uuid = Str::uuid();
       }
-      if (!$user->role_id) {
-         $user->role_id = \App\Models\Role::where('code', 'user')->value('id');
-         if (!$user->role_id) {
-            throw new \App\Exceptions\InvalidSetupException("Invalid setup, data not found for roles", 1);
-         }
+      if (!$user->title) {
+         $user->title = $user->email;
       }
+
    }
    /**
     * Handle the User "created" event.

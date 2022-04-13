@@ -5,6 +5,7 @@ namespace Admin\Console\Commands;
 use Admin\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AdminCreateCommand extends Command
@@ -31,11 +32,12 @@ class AdminCreateCommand extends Command
    public function handle()
    {
       $username = $this->ask('Username');
-      $phone = $this->ask('Phone');
+      $email = $this->ask('E-mail');
       $password = $this->ask('Password');
-      $role = $this->choice('Role', Role::get(['code', 'id'])->pluck('code')->toArray());
+      $role = $this->choice('Role', Role::get(['code', 'id'])->pluck('code', 'id')->toArray());
       try {
-         $user = $this->createAdmin($username, $phone, $password);
+         $roleId = Role::where('code', $role)->value('id');
+         $user = $this->createAdmin($username, $email, $password, $roleId);
          $this->info("Admin user created: {$user->name}");
       } catch (\Throwable $e) {
          $this->error($e->getMessage());
@@ -53,7 +55,7 @@ class AdminCreateCommand extends Command
       parent::__construct();
    }
 
-   function createAdmin($username, $email, $password)
+   function createAdmin($username, $email, $password, $roleId)
    {
       $ruler = Validator::make([
          'username' => $username,
@@ -64,15 +66,27 @@ class AdminCreateCommand extends Command
          'email' => ['required', 'string', 'max:200', 'unique:users'],
       ]);
       if ($ruler->fails()) {
+         foreach ($ruler->errors()->toArray() as $key => $value) {
+            $this->warn($key .': '. implode(', ', $value));
+         }
          throw new \Exception("Please all fields");
       }
 
-      $user = new User();
-      $user->username = $username;
-      $user->password = bcrypt($password);
-      $user->email = $email;
-      $user->role_id = Role::where('code', 'admin')->value('id');
-      $user->save();
-      return $user;
+      try {
+         DB::beginTransaction();
+         tap(User::create([
+            'username' => $username,
+            'password' => bcrypt($password),
+            'email' => $email,
+            // 'email' => $email,
+         ]), function($user) use ($roleId) {
+            dump($user->roles, $roleId);
+            $user->roles()->attach($roleId);
+         });
+         DB::commit();
+      } catch (\Throwable $th) {
+         throw $th;
+      }
+      return 0;
    }
 }

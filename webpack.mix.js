@@ -10,9 +10,11 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+const postCssConfig = [
    require('postcss-import'),
    require('tailwindcss'),
    require('autoprefixer'),
-]);
+]
+
+// mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', postCssConfig);
+mix.js('admin/assets/main.js', 'public/static/').react().postCss('admin/assets/main.css', 'public/static/', postCssConfig);

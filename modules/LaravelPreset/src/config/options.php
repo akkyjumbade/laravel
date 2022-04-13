@@ -50,16 +50,16 @@ return [
    /* Roles */
    'roles' => [
       [
-         'label' => 'User',
-         'value' => 'user',
+         'label' => 'Root',
+         'value' => 'root',
       ],
       [
          'label' => 'Admin',
          'value' => 'admin',
       ],
       [
-         'label' => 'Root',
-         'value' => 'root',
+         'label' => 'User',
+         'value' => 'user',
       ],
    ],
 

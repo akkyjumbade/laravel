@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Admin\Models\Role;
 use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
@@ -16,7 +17,7 @@ class RolesTableSeeder extends Seeder
       $roles = config('options.roles');
       foreach ($roles as $key => $role) {
          try {
-            \App\Models\Role::updateOrCreate([
+            Role::updateOrCreate([
                'code' => $role['value'],
             ], [
                'title' => $role['label'],

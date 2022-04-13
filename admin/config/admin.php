@@ -1,5 +1,6 @@
 <?php
 
+use Admin\Console\Commands\AdminCreateCommand;
 use Admin\Console\Commands\AdminSetupCommand;
 
 return [
@@ -19,6 +20,7 @@ return [
    'commands' => [
       \App\Console\Commands\CreateRoleCommand::class,
       AdminSetupCommand::class,
+      AdminCreateCommand::class,
    ],
    'broadcast_channels' => [
       'push_notification',

@@ -2,6 +2,7 @@
 
 namespace Admin\Console\Commands;
 
+use Database\Seeders\RolesTableSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -75,7 +76,9 @@ class AdminSetupCommand extends Command
 
    function migrateAdminSetup() {
       try {
-
+         Artisan::call('db:seed', [
+            '--class' => RolesTableSeeder::class
+         ]);
       } catch (\Throwable $th) {
          throw $th;
       }

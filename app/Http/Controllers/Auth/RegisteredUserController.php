@@ -99,13 +99,7 @@ class RegisteredUserController extends Controller
       }
       // Store attrs
       try {
-         $user->addAttribute('last_blood_donor_date', $request->input('last_blood_donor_date'));
-         $user->addAttribute('smoking', $request->input('smoking'));
-         $user->addAttribute('alcohal', $request->input('alcohal'));
-         $user->addAttribute('veg_nonveg', $request->input('veg_nonveg'));
-         $user->addAttribute('medial_history', $request->input('medial_history'));
-         $user->addAttribute('fcm_token', $request->input('fcm_token'));
-         $user->addAttribute('blood_group', $request->input('blood_group'));
+
       } catch (\Throwable $th) {
          // throw $th;
          return response()->error([
