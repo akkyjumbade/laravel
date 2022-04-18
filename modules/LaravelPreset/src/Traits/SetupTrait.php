@@ -1,6 +1,8 @@
 <?php
 namespace Modules\LaravelPreset\Traits;
 
+use Illuminate\Support\Facades\Artisan;
+
 trait SetupTrait {
    function setupAdmin() {
       try {
@@ -77,9 +79,9 @@ trait SetupTrait {
 
    function publishSetupAssetsAndCode() {
       try {
-         \Artisan::call('vendor:publish', [
-            '--tag' => 'setup-models'
-         ]);
+         // Artisan::call('vendor:publish', [
+         //    '--tag' => 'setup-models'
+         // ]);
       } catch (\Throwable $th) {
          throw $th;
       }

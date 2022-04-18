@@ -17,20 +17,6 @@ class LaravelPresetServiceProvider extends ServiceProvider {
          __DIR__.'/config/options.php' => config_path('options.php'),
          __DIR__.'/translations' => resource_path('lang/vendor/preset'),
       ]);
-      $this->publishes([
-         __DIR__.'/database/seeders' => database_path('seeders'),
-      ], 'setup-exports');
-      $this->publishes([
-         __DIR__.'/Models' => app_path('Models'),
-         __DIR__.'/Channels' => app_path('Channels'),
-         __DIR__.'/Rules' => app_path('Rules'),
-         __DIR__.'/Notifications' => app_path('Notifications'),
-      ], 'setup-models');
-      $this->publishes([
-         __DIR__.'/config/options.php' => config_path('options.php'),
-         __DIR__.'/translations' => resource_path('lang/vendor/preset'),
-         __DIR__.'/../assets' => public_path('assets/admin'),
-      ], 'admin-setup');
 
       // add the commands
       if ($this->app->runningInConsole()) {
