@@ -5,10 +5,15 @@ import { InertiaProgress } from '@inertiajs/progress'
 console.log('main file')
 
 InertiaProgress.init()
+import { default as Bootstrap } from './App'
 
 createInertiaApp({
    resolve: name => require(`./pages/${name}`),
    setup({ el, App, props }) {
-      render(<App {...props} />, el)
+      render((
+         <Bootstrap>
+            <App {...props} />
+         </Bootstrap>
+      ), el)
    },
 })

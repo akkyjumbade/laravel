@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Admin\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionsTableSeeder extends Seeder
@@ -19,23 +20,24 @@ class PermissionsTableSeeder extends Seeder
             $roleScopes = @$role['scopes'];
             if ($roleScopes) {
                foreach ($roleScopes as $scope) {
-                  \App\Models\Permission::updateOrCreate([
+                  Permission::updateOrCreate([
                      'code' => $role['value'],
                   ], [
                      'title' => $role['label'],
                      'description' => $role['label'],
                      'code' => $role['value'] . ':'.$scope,
-                     'resource' => $role['value'],
+                     // 'resource' => $role['value'],
                   ]);
                }
             } else {
-               \App\Models\Permission::updateOrCreate([
+
+               Permission::updateOrCreate([
                   'code' => $role['value'],
                ], [
                   'title' => $role['label'],
                   'description' => $role['label'],
                   'code' => $role['value'],
-                  'resource' => $role['value'],
+                  // 'resource' => $role['value'],
                ]);
             }
 

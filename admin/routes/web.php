@@ -13,7 +13,7 @@ use \Admin\Http\Controllers\{
 };
 
 Route::group([
-   'prefix' => 'admin',
+   // 'prefix' => 'admin',
    'as' => 'admin.',
    'middleware' => [
       'web',

@@ -20,7 +20,7 @@ return new class extends Migration
          $table->string('intent')->nullable();
          $table->longText('request')->nullable();
          $table->longText('payload')->comment('All data while performed action')->nullable();
-         $table->foreignIdFor(User::class, 'actor_user_id')->nullOnDelete();
+         $table->foreignId('actor_user_id')->nullable()->references('id')->on('users')->constrained()->nullOnDelete();
          $table->longText('session_data')->nullable();
          $table->integer('attempts')->default(0);
          $table->string('flag')->nullable();

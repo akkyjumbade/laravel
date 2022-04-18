@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Admin\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RolesTableSeeder extends Seeder
 {
@@ -14,19 +15,51 @@ class RolesTableSeeder extends Seeder
     */
    public function run()
    {
-      $roles = config('options.roles');
-      foreach ($roles as $key => $role) {
-         try {
-            Role::updateOrCreate([
-               'code' => $role['value'],
-            ], [
-               'title' => $role['label'],
-               'description' => $role['label'],
-               'code' => $role['value'],
-            ]);
-         } catch (\Throwable $th) {
-            throw $th;
-         }
+      // $roles = config('options.roles');
+
+      try {
+         DB::beginTransaction();
+         tap(Role::updateOrCreate([
+            'code' => 'root',
+         ], [
+            'title' => 'Super user',
+            'code' => 'root',
+         ]), function($rootRole) {
+            tap($rootRole->children()->updateOrCreate([
+               'code' => 'admin',
+            ],[
+               'title' => 'Admin',
+               'code' => 'admin',
+            ]), function ($adminRole) {
+               tap($adminRole->children()->updateOrCreate([
+                  'code' => 'user',
+               ],[
+                  'title' => 'Standard user',
+                  'code' => 'user',
+               ]), function ($userRole) {
+                  // tap()
+               });
+               tap($adminRole->children()->updateOrCreate([
+                  'code' => 'editor',
+               ],[
+                  'title' => 'Moderator',
+                  'code' => 'editor',
+               ]), function ($userRole) {
+                  // tap()
+               });
+               tap($adminRole->children()->updateOrCreate([
+                  'code' => 'csr',
+               ],[
+                  'title' => 'Customer support',
+                  'code' => 'csr',
+               ]), function ($userRole) {
+                  // tap()
+               });
+            });
+         });
+         DB::commit();
+      } catch (\Throwable $th) {
+         throw $th;
       }
    }
 }

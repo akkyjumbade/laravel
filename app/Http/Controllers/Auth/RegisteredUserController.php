@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -92,25 +93,17 @@ class RegisteredUserController extends Controller
          ]);
       } catch (\Throwable $th) {
          // throw $th;
-         return response()->error([
-            'message' => $th->getMessage()
-         ]);
+         // return response()->error([
+         //    'message' => $th->getMessage()
+         // ]);
          // DB::rollBack();
       }
       // Store attrs
-      try {
-
-      } catch (\Throwable $th) {
-         // throw $th;
-         return response()->error([
-            'message' => $th->getMessage()
-         ]);
-      }
-      \DB::commit();
+      DB::commit();
       event(new Registered($user));
       $token = null;
       if ($user) {
-         $user->load('address');
+         // $user->load('address');
          $token = auth('jwt')->login($user);
       }
       // Auth::login($user);

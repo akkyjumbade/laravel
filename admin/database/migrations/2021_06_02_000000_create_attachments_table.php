@@ -30,7 +30,7 @@ return new class extends Migration
       });
       Schema::create('attachables', function (Blueprint $table) {
          $table->id();
-         $table->foreignIdFor(Attachment::class);
+         $table->foreignIdFor(Attachment::class)->constrained();
          $table->morphs('attachable');
          $table->bigInteger('order_index')->default(999);
          $table->boolean('is_featured')->default(0);

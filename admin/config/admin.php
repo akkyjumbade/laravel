@@ -7,6 +7,7 @@ return [
    'title' => 'Admin Dashboard',
    'navicon_url' => '',
    'favicon_url' => '',
+   'admin_prefix' => 'cp',
    'roles' => [
 
    ],

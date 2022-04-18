@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Admin\Models\Setting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,12 +20,12 @@ class OptionsTableSeeder extends Seeder
          'title', 'time_format', 'date_format', 'timezone', 'default_country', 'locale', 'navicon_url', 'favicon_url',
       ]);
       foreach ($defaultOptions as $key => $value) {
-         DB::table('options')->updateOrInsert([
-            'var' => $key,
+         Setting::updateOrInsert([
+            'name' => $key,
          ], [
-            'var' => $key,
+            'name' => $key,
             'label' => $key,
-            'data' => $value,
+            'value' => $value,
          ]);
       }
    }

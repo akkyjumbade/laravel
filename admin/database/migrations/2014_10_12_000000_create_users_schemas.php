@@ -61,7 +61,7 @@ return new class extends Migration
       });
       Schema::create('user_attributes', function (Blueprint $table) {
          $table->id();
-         $table->foreignIdFor(User::class)->cascadeOnDelete();
+         $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
          $table->string('name')->index();
          $table->string('label');
          $table->string('group')->default('attribute');
@@ -79,8 +79,7 @@ return new class extends Migration
          $table->string('code')->unique();
          $table->string('description')->nullable();
          $table->boolean('is_active')->default(true);
-         $table->boolean('is_readonly')->default(false);
-         $table->foreignId('parent_id')->nullable()->constrained($table->getTable());
+         $table->foreignId('parent_id')->nullable()->references('id')->on('roles')->constrained($table->getTable());
          $table->timestampsTz();
       });
       Schema::create('permissions', function (Blueprint $table) {
@@ -88,18 +87,18 @@ return new class extends Migration
          $table->string('title')->index();
          $table->string('code')->unique();
          $table->string('description')->nullable();
-         $table->foreignId('parent_id')->nullable()->constrained($table->getTable())->comment('Store nested scoped permissions');
+         $table->foreignId('parent_id')->nullable()->references('id')->on('permissions')->constrained($table->getTable())->comment('Store nested scoped permissions');
          $table->timestampsTz();
       });
       Schema::create('permission_role', function (Blueprint $table) {
          $table->id();
-         $table->foreignIdFor(Role::class)->cascadeOnDelete();
-         $table->foreignIdFor(Permission::class)->cascadeOnDelete();
+         $table->foreignIdFor(Role::class)->references('id')->on('roles')->constrained()->cascadeOnDelete();
+         $table->foreignIdFor(Permission::class)->references('id')->on('permissions')->constrained()->cascadeOnDelete();
       });
       Schema::create('role_user', function (Blueprint $table) {
          $table->id();
-         $table->foreignIdFor(User::class)->cascadeOnDelete();
-         $table->foreignIdFor(Role::class)->cascadeOnDelete();
+         $table->foreignIdFor(User::class)->references('id')->on('users')->constrained()->cascadeOnDelete();
+         $table->foreignIdFor(Role::class)->references('id')->on('roles')->constrained()->cascadeOnDelete();
       });
       Schema::create('boards', function (Blueprint $table) {
          $table->id();
@@ -107,15 +106,15 @@ return new class extends Migration
          $table->string('code')->unique();
          $table->string('entity_type')->default('team');
          $table->string('description')->nullable();
-         $table->foreignId('parent_id')->nullable()->constrained($table->getTable());
-         $table->foreignIdFor(User::class, 'owner_user_id')->cascadeOnDelete();
+         $table->foreignId('parent_id')->nullable()->references('id')->on('boards')->constrained($table->getTable());
+         $table->foreignIdFor(User::class, 'owner_user_id')->references('id')->on('users')->constrained()->cascadeOnDelete();
          $table->softDeletesTz();
          $table->timestampsTz();
       });
       Schema::create('board_members', function (Blueprint $table) {
          $table->id();
-         $table->foreignIdFor(User::class)->cascadeOnDelete();
-         $table->foreignId('board_id')->constrained('boards')->cascadeOnDelete();
+         $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+         $table->foreignId('board_id')->references('id')->on('boards')->constrained('boards')->cascadeOnDelete();
          $table->string('role_code')->default('member');
          $table->timestampTz('invited_at')->useCurrent();
          $table->timestampTz('joined_at')->nullable();
