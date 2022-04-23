@@ -120,6 +120,25 @@ return new class extends Migration
          $table->timestampTz('joined_at')->nullable();
       });
 
+      if (!Schema::hasTable('password_resets')) {
+         Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestampTz('created_at')->nullable();
+         });
+      }
+      
+      if (!Schema::hasTable('sessions')) {
+         Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignIdFor(User::class)->nullable();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->text('payload');
+            $table->integer('last_activity')->index();
+         });
+      }
+      
 
    }
 
@@ -138,5 +157,7 @@ return new class extends Migration
       Schema::dropIfExists('board_members');
       Schema::dropIfExists('boards');
       Schema::dropIfExists('users');
+      Schema::dropIfExists('password_resets');
+      Schema::dropIfExists('sessions');
    }
 };

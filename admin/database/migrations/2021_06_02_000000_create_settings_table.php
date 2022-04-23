@@ -16,14 +16,10 @@ return new class extends Migration
       Schema::create('settings', function (Blueprint $table) {
          $table->id();
          $table->string('name');
-         $table->string('label');
          $table->string('type')->default('text');
-         $table->string('description')->nullable();
-         $table->string('input_component')->default('TextInput');
-         $table->string('output_component')->default('View');
          $table->longText('value')->nullable();
          $table->longText('default_value')->nullable();
-         $table->string('fieldset')->nullable();
+         $table->string('fieldset')->default('options');
          $table->boolean('is_autoload')->default(false);
          $table->timestampsTz();
       });

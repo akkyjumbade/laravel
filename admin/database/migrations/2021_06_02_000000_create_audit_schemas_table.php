@@ -26,6 +26,16 @@ return new class extends Migration
          $table->string('flag')->nullable();
          $table->timestampsTz();
       });
+      Schema::create('statuses', function (Blueprint $table) {
+         $table->id();
+         $table->string('code');
+         $table->string('description')->nullable();
+         $table->string('color')->default('#ccc');
+         $table->morphs('statusable');
+         $table->foreignIdFor(User::class, 'created_by_user_id')->nullable()->references('id')->on('users')->nullOnDelete();
+         $table->longText('payload')->nullable();
+         $table->timestampsTz();
+      });
    }
 
    /**
@@ -36,5 +46,6 @@ return new class extends Migration
    public function down()
    {
       Schema::dropIfExists('activity_logs');
+      Schema::dropIfExists('statuses');
    }
 };

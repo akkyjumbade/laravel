@@ -21,7 +21,7 @@ return new class extends Migration
          $table->string('mime_type')->nullable();
          $table->string('drive')->default('local');
          $table->string('dir')->default('uploads');
-         $table->string('original_url')->nullable();
+         $table->text('original_url')->nullable();
          $table->string('color')->default('#000');
          $table->longText('meta')->nullable();
          $table->timestampTz('published_at')->nullable();
