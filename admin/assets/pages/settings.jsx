@@ -1,8 +1,8 @@
 import React from 'react'
-export default function Settings() {
+export default function Settings({ settings }) {
    return (
       <div>
-         Settings
+         {JSON.stringify(settings)}
       </div>
    )
 }

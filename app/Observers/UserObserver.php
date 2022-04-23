@@ -47,6 +47,9 @@ class UserObserver
          $user->username = uniqid();
       }
       $user->save();
+      $user->teams()->create([
+         'title' => $user->name
+      ]);
    }
 
    /**

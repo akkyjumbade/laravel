@@ -5,6 +5,7 @@ export default function Home() {
       <div>
          Home
          <InertiaLink href={route('admin.profile')}>Profile</InertiaLink>
+         <InertiaLink href={route('admin.teams.index')}>Teams</InertiaLink>
       </div>
    )
 }

@@ -2,47 +2,40 @@
 
 namespace Admin\Http\Controllers;
 
+use Admin\Http\Requests\TeamRequest;
 use Admin\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Admin\Models\Role;
+use Admin\Models\Team;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserController extends Controller
+class TeamController extends Controller
 {
-   function index(UserRequest $req) {
-      $users = User::latest();
-      $reqCode = $req->query('role');
-      if ($reqCode) {
-         $users->whereHas('roles', function($q) use ($reqCode) {
-            $q->where('code', $reqCode);
-         });
-      }
-      $status = $req->query('status', null);
-      if ($status) {
-         $users->where('status', $status);
-      }
-      $users->with('roles:id,title,code');
-      $users = $users->paginate(config('admin.pagination_limit'));
-      return inertia('users/index', compact(
-         'users'
+   function index(TeamRequest $req) {
+      $teams = Team::latest();
+      $teams = $teams->paginate(config('admin.pagination_limit'));
+      return inertia('teams/index', compact(
+         'teams'
       ));
    }
    function create() {
-      $user = new User;
-      $roles = Role::select(['id as value', 'title as label'])->get()->toArray();
-      return inertia('users/create', compact(
-         'user', 'roles'
+      $team = new Team;
+      $team->fill([
+         'title' => 'My big team'
+      ]);
+      // $roles = Role::select(['id as value', 'title as label'])->get()->toArray();
+      return inertia('teams/create', compact(
+         'team'
       ));
    }
 
-   function store(UserRequest $req) {
+   function store(TeamRequest $req) {
       try {
-         $user = User::create($req->validated());
-         return response()->success([
-            'message' => __('User created'),
-            'data' => $user
-         ]);
+         $team = Team::create($req->validated());
+         return redirect()->route('admin.teams.show', $team)->withSuccess(
+            'Team created'
+         );
       }catch (\Throwable $th) {
          return response()->error([
             'message' => $th->getMessage()

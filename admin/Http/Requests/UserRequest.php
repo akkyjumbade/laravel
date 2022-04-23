@@ -23,6 +23,9 @@ class UserRequest extends FormRequest
     */
    public function rules()
    {
+      if ($this->isMethod('get')) {
+         return [];
+      }
       return [
          'first_name' => [
             'required',

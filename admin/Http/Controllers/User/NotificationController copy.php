@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-class ProfileController extends Controller
+class NotificationController extends Controller
 {
-   function __invoke(Request $req) {
+   function index(Request $req) {
       $user = $req->user();
-      // $subscribers = DB::table('subscribers')->get();
-      // return $user;
-      return inertia('user/profile', [
-         'user' => $user
-      ]);
+      $subscribers = DB::table('subscribers')->get();
+      return $user;
       // return view('admin::profile', compact(
       //    'user',
       // ));

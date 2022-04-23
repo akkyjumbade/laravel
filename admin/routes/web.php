@@ -10,27 +10,20 @@ use \Admin\Http\Controllers\{
    SettingController,
    StorageController,
    BroadcastController,
+   TeamController,
 };
+use Admin\Http\Controllers\User\ProfileController;
 
-Route::group([
-   // 'prefix' => 'cp',
-   // 'as' => 'admin.',
-   'middleware' => [
-      'web',
-      'auth',
-   ]
-], function () {
-   Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-   Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
-   Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
-   Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
-   Route::get('settings', [SettingController::class, 'index'])->name('settings');
-   Route::get('storage', [StorageController::class, 'index'])->name('index');
-   Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/profile', [ProfileController::class, '__invoke'])->name('profile');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
+Route::get('settings', [SettingController::class, 'index'])->name('settings');
+Route::get('storage', [StorageController::class, 'index'])->name('index');
+Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
 
-   Route::resource('roles', RoleController::class);
-   Route::resource('permissions', PermissionController::class);
-   Route::resource('categories', CategoryController::class);
-   Route::resource('users', UserController::class);
-
-});
+Route::resource('roles', RoleController::class)->names('roles');
+Route::resource('permissions', PermissionController::class)->names('permissions');
+Route::resource('categories', CategoryController::class)->names('categories');
+Route::resource('users', UserController::class)->names('users');
+Route::resource('teams', TeamController::class)->names('teams');

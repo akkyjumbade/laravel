@@ -17,9 +17,9 @@ class SettingController extends Controller
             $row->var => $row->data
          ];
       });
-      return view('admin::settings', compact(
-         'options'
-      ));
+      return inertia('settings', [
+         'settings' => $options,
+      ]);
    }
 
 }
