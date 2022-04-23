@@ -25,6 +25,8 @@ class AdminServiceProvider extends ServiceProvider {
          $this->commands(config('admin.commands'));
       }
 
+      view()->share('user', request()->user());
+
    }
 
    function register() {

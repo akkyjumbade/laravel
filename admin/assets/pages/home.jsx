@@ -4,7 +4,7 @@ export default function Home() {
    return (
       <div>
          Home
-         <InertiaLink href='/admin/profile'>Profile</InertiaLink>
+         <InertiaLink href={route('admin.profile')}>Profile</InertiaLink>
       </div>
    )
 }

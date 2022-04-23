@@ -13,8 +13,8 @@ use \Admin\Http\Controllers\{
 };
 
 Route::group([
-   // 'prefix' => 'admin',
-   'as' => 'admin.',
+   // 'prefix' => 'cp',
+   // 'as' => 'admin.',
    'middleware' => [
       'web',
       'auth',
@@ -24,7 +24,6 @@ Route::group([
    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
    Route::get('/inbox', [DashboardController::class, 'inbox'])->name('inbox');
    Route::get('/edit', [DashboardController::class, 'editProfile'])->name('edit');
-   Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
    Route::get('settings', [SettingController::class, 'index'])->name('settings');
    Route::get('storage', [StorageController::class, 'index'])->name('index');
    Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
