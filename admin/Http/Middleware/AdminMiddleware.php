@@ -17,8 +17,11 @@ class AdminMiddleware
    public function handle(Request $request, Closure $next)
    {
       $user = $request->user();
+      if (!$user) {
+         return abort(401);
+      }
+      // dd($user);
       $roles = $user->roles()->pluck('code');
-      // dd($roles, $user);
       if ($roles && in_array('admin', $roles->toArray())) {
          return $next($request);
       }

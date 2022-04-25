@@ -24,7 +24,6 @@ class OptionsTableSeeder extends Seeder
             'name' => $key,
          ], [
             'name' => $key,
-            'label' => $key,
             'value' => $value,
          ]);
       }

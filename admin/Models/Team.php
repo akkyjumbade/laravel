@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Team extends Model
 {
-   protected $table = 'boards';
+   protected $table = 'teams';
    /**
     * The attributes that are mass assignable.
     *

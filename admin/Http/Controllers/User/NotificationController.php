@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
-   function index(Request $req) {
+   function __invoke(Request $req) {
       $user = $req->user();
-      $subscribers = DB::table('subscribers')->get();
-      return $user;
-      // return view('admin::profile', compact(
-      //    'user',
-      // ));
+      $notifications = $user->notifications()->latest()->get();
+      return inertia('user/notifications', [
+         'notifications' => $notifications,
+      ]);
    }
 
 }

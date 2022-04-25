@@ -1,8 +1,10 @@
 import React from 'react'
+import { Page } from '../components/templates'
+
 export default function Settings({ settings }) {
    return (
-      <div>
+      <Page title={'Settings'}>
          {JSON.stringify(settings)}
-      </div>
+      </Page>
    )
 }

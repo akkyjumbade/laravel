@@ -1,19 +1,21 @@
+import { InertiaLink } from "@inertiajs/inertia-react";
+
 export default function Header() {
    return (
-      <header className="bg-white border-b border-gray-100">
+      <nav className="bg-white border-b border-gray-100">
          <div className="container mx-auto">
             <div className="flex">
                <div className="md:w-32">
-logo
+                  <InertiaLink href="/cp">Logo</InertiaLink>
                </div>
-               <div className="md:w-auto">
-center
+               <div className="flex-1">
+                  center
                </div>
                <div className="md:w-3/12">
                   right
                </div>
             </div>
          </div>
-      </header>
+      </nav>
    )
 }

@@ -34,9 +34,6 @@ return new class extends Migration
          if (!Schema::hasColumn($table->getTable(), 'uuid')) {
             $table->uuid('uuid');
          }
-         if (!Schema::hasColumn($table->getTable(), 'title')) {
-            $table->string('title');
-         }
          if (!Schema::hasColumn($table->getTable(), 'username')) {
             $table->string('username');
          }
@@ -100,21 +97,21 @@ return new class extends Migration
          $table->foreignIdFor(User::class)->references('id')->on('users')->constrained()->cascadeOnDelete();
          $table->foreignIdFor(Role::class)->references('id')->on('roles')->constrained()->cascadeOnDelete();
       });
-      Schema::create('boards', function (Blueprint $table) {
+      Schema::create('teams', function (Blueprint $table) {
          $table->id();
          $table->string('title')->index();
          $table->string('code')->unique();
          $table->string('entity_type')->default('team');
          $table->string('description')->nullable();
-         $table->foreignId('parent_id')->nullable()->references('id')->on('boards')->constrained($table->getTable());
-         $table->foreignIdFor(User::class, 'owner_user_id')->references('id')->on('users')->constrained()->cascadeOnDelete();
+         $table->foreignId('parent_id')->nullable()->references('id')->on('teams')->constrained($table->getTable());
+         $table->foreignId('owner_user_id')->references('id')->on('users')->constrained()->cascadeOnDelete();
          $table->softDeletesTz();
          $table->timestampsTz();
       });
-      Schema::create('board_members', function (Blueprint $table) {
+      Schema::create('team_members', function (Blueprint $table) {
          $table->id();
          $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-         $table->foreignId('board_id')->references('id')->on('boards')->constrained('boards')->cascadeOnDelete();
+         $table->foreignId('team_id')->references('id')->on('teams')->constrained('teams')->cascadeOnDelete();
          $table->string('role_code')->default('member');
          $table->timestampTz('invited_at')->useCurrent();
          $table->timestampTz('joined_at')->nullable();
@@ -127,7 +124,7 @@ return new class extends Migration
             $table->timestampTz('created_at')->nullable();
          });
       }
-      
+
       if (!Schema::hasTable('sessions')) {
          Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
@@ -138,7 +135,7 @@ return new class extends Migration
             $table->integer('last_activity')->index();
          });
       }
-      
+
 
    }
 
@@ -154,8 +151,8 @@ return new class extends Migration
       Schema::dropIfExists('permissions');
       Schema::dropIfExists('role_user');
       Schema::dropIfExists('roles');
-      Schema::dropIfExists('board_members');
-      Schema::dropIfExists('boards');
+      Schema::dropIfExists('team_members');
+      Schema::dropIfExists('teams');
       Schema::dropIfExists('users');
       Schema::dropIfExists('password_resets');
       Schema::dropIfExists('sessions');

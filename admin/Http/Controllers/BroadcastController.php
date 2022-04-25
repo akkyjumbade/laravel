@@ -12,7 +12,7 @@ class BroadcastController extends Controller
    function index(Request $req) {
       $channels = config('admin.broadcast_channels');
       $subscribers = DB::table('subscribers')->get();
-      return view('admin::broadcast', compact(
+      return inertia('broadcast', compact(
          'channels', 'subscribers'
       ));
    }

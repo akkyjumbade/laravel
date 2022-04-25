@@ -30,9 +30,6 @@ class UserObserver
       if (!$user->uuid) {
          $user->uuid = Str::uuid();
       }
-      if (!$user->title) {
-         $user->title = $user->email;
-      }
 
    }
    /**
