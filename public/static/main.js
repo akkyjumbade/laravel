@@ -1,40 +1,215 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./admin/assets/pages sync recursive ^\\.\\/.*$":
-/*!*******************************************!*\
-  !*** ./admin/assets/pages/ sync ^\.\/.*$ ***!
-  \*******************************************/
+/***/ "./admin/assets/pages lazy recursive ^\\.\\/.*$":
+/*!************************************************************!*\
+  !*** ./admin/assets/pages/ lazy ^\.\/.*$ namespace object ***!
+  \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./home": "./admin/assets/pages/home.jsx",
-	"./home.jsx": "./admin/assets/pages/home.jsx",
-	"./settings": "./admin/assets/pages/settings.jsx",
-	"./settings.jsx": "./admin/assets/pages/settings.jsx",
-	"./user/profile": "./admin/assets/pages/user/profile.jsx",
-	"./user/profile.jsx": "./admin/assets/pages/user/profile.jsx"
+	"./assets": [
+		"./admin/assets/pages/assets/index.js",
+		"admin_assets_pages_assets_index_js"
+	],
+	"./assets/": [
+		"./admin/assets/pages/assets/index.js",
+		"admin_assets_pages_assets_index_js"
+	],
+	"./assets/index": [
+		"./admin/assets/pages/assets/index.js",
+		"admin_assets_pages_assets_index_js"
+	],
+	"./assets/index.js": [
+		"./admin/assets/pages/assets/index.js",
+		"admin_assets_pages_assets_index_js"
+	],
+	"./broadcast": [
+		"./admin/assets/pages/broadcast.jsx",
+		"admin_assets_pages_broadcast_jsx"
+	],
+	"./broadcast.jsx": [
+		"./admin/assets/pages/broadcast.jsx",
+		"admin_assets_pages_broadcast_jsx"
+	],
+	"./home": [
+		"./admin/assets/pages/home.jsx",
+		"admin_assets_pages_home_jsx"
+	],
+	"./home.jsx": [
+		"./admin/assets/pages/home.jsx",
+		"admin_assets_pages_home_jsx"
+	],
+	"./resources": [
+		"./admin/assets/pages/resources/index.jsx",
+		"admin_assets_pages_resources_index_jsx"
+	],
+	"./resources/": [
+		"./admin/assets/pages/resources/index.jsx",
+		"admin_assets_pages_resources_index_jsx"
+	],
+	"./resources/create": [
+		"./admin/assets/pages/resources/create.jsx",
+		"admin_assets_pages_resources_create_jsx"
+	],
+	"./resources/create.jsx": [
+		"./admin/assets/pages/resources/create.jsx",
+		"admin_assets_pages_resources_create_jsx"
+	],
+	"./resources/edit": [
+		"./admin/assets/pages/resources/edit.jsx",
+		"admin_assets_pages_resources_edit_jsx"
+	],
+	"./resources/edit.jsx": [
+		"./admin/assets/pages/resources/edit.jsx",
+		"admin_assets_pages_resources_edit_jsx"
+	],
+	"./resources/index": [
+		"./admin/assets/pages/resources/index.jsx",
+		"admin_assets_pages_resources_index_jsx"
+	],
+	"./resources/index.jsx": [
+		"./admin/assets/pages/resources/index.jsx",
+		"admin_assets_pages_resources_index_jsx"
+	],
+	"./resources/tags": [
+		"./admin/assets/pages/resources/tags.jsx",
+		"admin_assets_pages_resources_tags_jsx"
+	],
+	"./resources/tags.jsx": [
+		"./admin/assets/pages/resources/tags.jsx",
+		"admin_assets_pages_resources_tags_jsx"
+	],
+	"./settings": [
+		"./admin/assets/pages/settings.jsx",
+		"admin_assets_pages_settings_jsx"
+	],
+	"./settings.jsx": [
+		"./admin/assets/pages/settings.jsx",
+		"admin_assets_pages_settings_jsx"
+	],
+	"./taxonomies": [
+		"./admin/assets/pages/taxonomies/index.jsx",
+		"admin_assets_pages_taxonomies_index_jsx"
+	],
+	"./taxonomies/": [
+		"./admin/assets/pages/taxonomies/index.jsx",
+		"admin_assets_pages_taxonomies_index_jsx"
+	],
+	"./taxonomies/create": [
+		"./admin/assets/pages/taxonomies/create.jsx",
+		"admin_assets_pages_taxonomies_create_jsx"
+	],
+	"./taxonomies/create.jsx": [
+		"./admin/assets/pages/taxonomies/create.jsx",
+		"admin_assets_pages_taxonomies_create_jsx"
+	],
+	"./taxonomies/index": [
+		"./admin/assets/pages/taxonomies/index.jsx",
+		"admin_assets_pages_taxonomies_index_jsx"
+	],
+	"./taxonomies/index.jsx": [
+		"./admin/assets/pages/taxonomies/index.jsx",
+		"admin_assets_pages_taxonomies_index_jsx"
+	],
+	"./taxonomies/tags": [
+		"./admin/assets/pages/taxonomies/tags.jsx",
+		"admin_assets_pages_taxonomies_tags_jsx"
+	],
+	"./taxonomies/tags.jsx": [
+		"./admin/assets/pages/taxonomies/tags.jsx",
+		"admin_assets_pages_taxonomies_tags_jsx"
+	],
+	"./teams": [
+		"./admin/assets/pages/teams/index.jsx",
+		"admin_assets_pages_teams_index_jsx"
+	],
+	"./teams/": [
+		"./admin/assets/pages/teams/index.jsx",
+		"admin_assets_pages_teams_index_jsx"
+	],
+	"./teams/create": [
+		"./admin/assets/pages/teams/create.jsx",
+		"admin_assets_pages_teams_create_jsx"
+	],
+	"./teams/create.jsx": [
+		"./admin/assets/pages/teams/create.jsx",
+		"admin_assets_pages_teams_create_jsx"
+	],
+	"./teams/index": [
+		"./admin/assets/pages/teams/index.jsx",
+		"admin_assets_pages_teams_index_jsx"
+	],
+	"./teams/index.jsx": [
+		"./admin/assets/pages/teams/index.jsx",
+		"admin_assets_pages_teams_index_jsx"
+	],
+	"./user/notifications": [
+		"./admin/assets/pages/user/notifications.jsx",
+		"admin_assets_pages_user_notifications_jsx"
+	],
+	"./user/notifications.jsx": [
+		"./admin/assets/pages/user/notifications.jsx",
+		"admin_assets_pages_user_notifications_jsx"
+	],
+	"./user/preferences": [
+		"./admin/assets/pages/user/preferences.jsx",
+		"admin_assets_pages_user_preferences_jsx"
+	],
+	"./user/preferences.jsx": [
+		"./admin/assets/pages/user/preferences.jsx",
+		"admin_assets_pages_user_preferences_jsx"
+	],
+	"./user/profile": [
+		"./admin/assets/pages/user/profile.jsx",
+		"admin_assets_pages_user_profile_jsx"
+	],
+	"./user/profile.jsx": [
+		"./admin/assets/pages/user/profile.jsx",
+		"admin_assets_pages_user_profile_jsx"
+	],
+	"./users": [
+		"./admin/assets/pages/users/index.jsx",
+		"admin_assets_pages_users_index_jsx"
+	],
+	"./users/": [
+		"./admin/assets/pages/users/index.jsx",
+		"admin_assets_pages_users_index_jsx"
+	],
+	"./users/create": [
+		"./admin/assets/pages/users/create.jsx",
+		"admin_assets_pages_users_create_jsx"
+	],
+	"./users/create.jsx": [
+		"./admin/assets/pages/users/create.jsx",
+		"admin_assets_pages_users_create_jsx"
+	],
+	"./users/index": [
+		"./admin/assets/pages/users/index.jsx",
+		"admin_assets_pages_users_index_jsx"
+	],
+	"./users/index.jsx": [
+		"./admin/assets/pages/users/index.jsx",
+		"admin_assets_pages_users_index_jsx"
+	]
 };
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
+function webpackAsyncContext(req) {
 	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
+		return Promise.resolve().then(() => {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
 	}
-	return map[req];
+
+	var ids = map[req], id = ids[0];
+	return __webpack_require__.e(ids[1]).then(() => {
+		return __webpack_require__(id);
+	});
 }
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./admin/assets/pages sync recursive ^\\.\\/.*$";
+webpackAsyncContext.keys = () => (Object.keys(map));
+webpackAsyncContext.id = "./admin/assets/pages lazy recursive ^\\.\\/.*$";
+module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -3061,13 +3236,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_oragnisms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/oragnisms */ "./admin/assets/components/oragnisms/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_molecules_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/molecules/Footer */ "./admin/assets/components/molecules/Footer.jsx");
+/* harmony import */ var _components_molecules_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/molecules/Header */ "./admin/assets/components/molecules/Header.jsx");
+/* harmony import */ var _components_oragnisms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/oragnisms */ "./admin/assets/components/oragnisms/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _excluded = ["children"];
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
 
 
 
@@ -3079,8 +3259,137 @@ function App(_ref) {
   console.log({
     props: props
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_1__.Layout, {
-    children: ["sd sdf df", children]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_3__.Layout, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_molecules_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
+      className: "flex-1",
+      children: children
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_molecules_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+  });
+}
+
+/***/ }),
+
+/***/ "./admin/assets/components/molecules/Footer.jsx":
+/*!******************************************************!*\
+  !*** ./admin/assets/components/molecules/Footer.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Footer)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function Footer() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("footer", {
+    className: "bg-white border-b border-gray-100",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "container mx-auto",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "flex",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "md:w-32",
+          children: "logo"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "md:w-auto",
+          children: "center"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "md:w-3/12",
+          children: "right"
+        })]
+      })
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./admin/assets/components/molecules/Header.jsx":
+/*!******************************************************!*\
+  !*** ./admin/assets/components/molecules/Header.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Header)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./admin/assets/utils/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Header() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("nav", {
+    className: "bg-white border-b border-gray-100",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "container mx-auto",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "flex",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "md:w-32",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.InertiaLink, {
+            href: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.route)('admin'),
+            children: "Logo"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "flex-1",
+          children: "center"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "md:w-3/12",
+          children: "right"
+        })]
+      })
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./admin/assets/components/oragnisms/CollectionToolbar.jsx":
+/*!*****************************************************************!*\
+  !*** ./admin/assets/components/oragnisms/CollectionToolbar.jsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CollectionToolbar)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function CollectionToolbar(_ref) {
+  _objectDestructuringEmpty(_ref);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "container mx-auto mb-4",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "flex flex-col md:flex-row items-center justify-between gap-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "md:w-6/12",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+          placeholder: "Search"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "md:w-6/12 flex justify-end gap-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          children: "Add New"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          children: "Export"
+        })]
+      })]
+    })
   });
 }
 
@@ -3101,9 +3410,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function Layout(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "bg-gray-100 w-full h-full",
-    children: ["sdfsdf sdfsdfsfds dfsdfsf", children]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "bg-gray-100 w-screen h-screen flex flex-col ",
+    children: children
   });
 }
 
@@ -3118,9 +3427,12 @@ function Layout(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Layout": () => (/* reexport safe */ _Layout__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "Layout": () => (/* reexport safe */ _Layout__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "CollectionToolbar": () => (/* reexport safe */ _CollectionToolbar__WEBPACK_IMPORTED_MODULE_1__["default"])
 /* harmony export */ });
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layout */ "./admin/assets/components/oragnisms/Layout.jsx");
+/* harmony import */ var _CollectionToolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CollectionToolbar */ "./admin/assets/components/oragnisms/CollectionToolbar.jsx");
+
 
 
 /***/ }),
@@ -3156,7 +3468,7 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init();
 
 (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.createInertiaApp)({
   resolve: function resolve(name) {
-    return __webpack_require__("./admin/assets/pages sync recursive ^\\.\\/.*$")("./".concat(name));
+    return __webpack_require__("./admin/assets/pages lazy recursive ^\\.\\/.*$")("./".concat(name));
   },
   setup: function setup(_ref) {
     var el = _ref.el,
@@ -3170,81 +3482,34 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init();
 
 /***/ }),
 
-/***/ "./admin/assets/pages/home.jsx":
+/***/ "./admin/assets/utils/api.js":
+/*!***********************************!*\
+  !*** ./admin/assets/utils/api.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "route": () => (/* binding */ route)
+/* harmony export */ });
+var route = window.route; // export route
+
+/***/ }),
+
+/***/ "./admin/assets/utils/index.js":
 /*!*************************************!*\
-  !*** ./admin/assets/pages/home.jsx ***!
+  !*** ./admin/assets/utils/index.js ***!
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Home)
+/* harmony export */   "route": () => (/* reexport safe */ _api__WEBPACK_IMPORTED_MODULE_0__.route)
 /* harmony export */ });
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./admin/assets/utils/api.js");
 
-
-
-
-function Home() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: ["Home", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.InertiaLink, {
-      href: "/admin/profile",
-      children: "Profile"
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./admin/assets/pages/settings.jsx":
-/*!*****************************************!*\
-  !*** ./admin/assets/pages/settings.jsx ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Settings)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function Settings() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "Settings"
-  });
-}
-
-/***/ }),
-
-/***/ "./admin/assets/pages/user/profile.jsx":
-/*!*********************************************!*\
-  !*** ./admin/assets/pages/user/profile.jsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Profile)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function Profile() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "Profile"
-  });
-}
 
 /***/ }),
 
@@ -41718,6 +41983,39 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames not based on template
+/******/ 			if ({"admin_assets_pages_assets_index_js":1,"admin_assets_pages_broadcast_jsx":1,"admin_assets_pages_home_jsx":1,"admin_assets_pages_resources_index_jsx":1,"admin_assets_pages_resources_create_jsx":1,"admin_assets_pages_resources_edit_jsx":1,"admin_assets_pages_resources_tags_jsx":1,"admin_assets_pages_settings_jsx":1,"admin_assets_pages_taxonomies_index_jsx":1,"admin_assets_pages_taxonomies_create_jsx":1,"admin_assets_pages_taxonomies_tags_jsx":1,"admin_assets_pages_teams_index_jsx":1,"admin_assets_pages_teams_create_jsx":1,"admin_assets_pages_user_notifications_jsx":1,"admin_assets_pages_user_preferences_jsx":1,"admin_assets_pages_user_profile_jsx":1,"admin_assets_pages_users_index_jsx":1,"admin_assets_pages_users_create_jsx":1}[chunkId]) return "static/" + chunkId + ".js";
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference all chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".css";
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -41733,6 +42031,52 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		// data-webpack is not used as build has no uniqueName
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			;
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -41755,6 +42099,11 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "/";
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
@@ -41767,7 +42116,44 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			"static/main": 0
 /******/ 		};
 /******/ 		
-/******/ 		// no chunk on demand loading
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if("static/main" != chunkId) {
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 					}
+/******/ 				}
+/******/ 		};
 /******/ 		
 /******/ 		// no prefetching
 /******/ 		

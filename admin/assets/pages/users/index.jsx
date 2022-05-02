@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Inertia } from '@inertiajs/inertia';
 import { Page } from '../../components/templates';
 import { useMemo } from 'react';
-import { CollectionToolbar } from '../../components/oragnisms'
+import { CollectionToolbar, Table } from '../../components/oragnisms'
 
 const SelectAllCell = ({
    value,
@@ -81,7 +81,7 @@ export default function users({ users }) {
       <Page title={'Users'}>
          <CollectionToolbar />
          <Page.Section>
-            <DataGrid
+            <Table
                className="rdg-light"
                columns={columns}
                rows={users.data}

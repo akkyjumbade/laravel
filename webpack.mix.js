@@ -17,4 +17,15 @@ const postCssConfig = [
 ]
 
 // mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', postCssConfig);
-mix.js('admin/assets/main.js', 'public/static/').react().postCss('admin/assets/main.css', 'public/static/', postCssConfig);
+mix.js('admin/assets/main.js', 'public/static/').react().extract([
+   'react',
+   'react-dom',
+   'tailwindcss',
+   'lodash',
+   'axios',
+   '@inertiajs/inertia',
+   '@inertiajs/inertia-react',
+   'formik',
+   'react-headroom'
+])
+mix.postCss('admin/assets/main.css', 'public/static/', postCssConfig);

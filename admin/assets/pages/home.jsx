@@ -1,26 +1,39 @@
 import { InertiaLink } from '@inertiajs/inertia-react'
 import React from 'react'
+import CtaCard from '../components/molecules/CtaCard'
+import WelcomeSection from '../components/molecules/WelcomeSection'
+import { Table } from '../components/oragnisms'
 import { Page } from '../components/templates'
 export default function Home() {
    return (
       <Page>
-         <ul>
-            <li>
-               <InertiaLink href={route('admin.profile')}>Profile</InertiaLink>
-            </li>
-            <li>
-               <InertiaLink href={route('admin.teams.index')}>Teams</InertiaLink>
-            </li>
-            <li>
-               <InertiaLink href={route('admin.users.index')}>Users</InertiaLink>
-            </li>
-            <li>
-               <InertiaLink href={route('admin.taxonomies.index')}>taxonomies</InertiaLink>
-            </li>
-            <li>
-               <InertiaLink href={route('admin.settings')}>Settings</InertiaLink>
-            </li>
-         </ul>
+         <Page.Section className="mb-6">
+            <WelcomeSection title={'Welcome'}>
+               <div className="grid grid-cols-4 gap-4">
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+                  <div className="grid__cell">
+                     <CtaCard />
+                  </div>
+               </div>
+            </WelcomeSection>
+         </Page.Section>
+         <Page.Section className="mb-6">
+            <Table />
+         </Page.Section>
       </Page>
    )
 }

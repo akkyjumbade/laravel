@@ -1,8 +1,10 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-   purge: [
-
+   content: [
+      './resources/js/*.{js,jsx}',
+      './admin/assets/**/*.{js,jsx}',
+      './admin/assets/**/**/*.{js,jsx}',
    ],
 
    theme: {
@@ -19,5 +21,10 @@ module.exports = {
       },
    },
 
-   plugins: [require('@tailwindcss/forms')],
+   plugins: [
+      // require('@tailwindcss/forms'),
+      // require('postcss-import'),
+      // require('tailwindcss'),
+      // require('autoprefixer'),
+   ],
 };

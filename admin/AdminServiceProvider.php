@@ -5,7 +5,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider {
    function boot() {
-      // $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+      $this->loadRoutesFrom(__DIR__.'/routes/web.php');
       $this->mergeConfigFrom(__DIR__.'/config/admin.php', 'admin');
       $this->mergeConfigFrom(__DIR__.'/config/menus.php', 'menus');
       $this->loadViewsFrom(__DIR__.'/views', 'admin');

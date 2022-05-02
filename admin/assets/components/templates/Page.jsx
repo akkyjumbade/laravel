@@ -25,9 +25,9 @@ export default function Page({ title, children }) {
    )
 }
 
-Page.Section = ({ children }) => {
+Page.Section = ({ children, className, ...rest }) => {
    return (
-      <div className="container mx-auto">
+      <div className={`container mx-auto ${className}`}>
          {children}
       </div>
    )
