@@ -48,7 +48,7 @@ export default function notifications({ notifications }) {
                      <Cell>1/18/2016</Cell>
                   </Row>
                </TableBody>
-               </Table>
+            </Table>
             {/* <ResourcePicker /> */}
          </Page.Section>
       </Page>

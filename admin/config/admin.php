@@ -86,7 +86,7 @@ return [
          ],
       ]
    ],
-   'pagination_limit' => 100,
+   'pagination_limit' => 10,
    'date_format' => 'Y-m-d',
    'time_format' => 'Y-m-d',
 ];

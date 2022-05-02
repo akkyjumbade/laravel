@@ -25,7 +25,7 @@ export default function TableColumnHeader({ column, state }) {
          }}
          ref={ref}
       >
-         {column.rendered}
+         <span className='whitespace-nowrap'>{column.rendered}</span>
          {column.props.allowsSorting &&
             (
                <span

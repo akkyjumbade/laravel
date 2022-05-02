@@ -16,8 +16,11 @@ export default function TableCell({ cell, state }) {
             outline: isFocusVisible ? '2px solid orange' : 'none',
             cursor: 'default'
          }}
-         ref={ref}>
-         {cell.rendered}
+         ref={ref}
+      >
+         <div className='whitespace-nowrap'>
+            {cell.rendered}
+         </div>
       </td>
    );
 }

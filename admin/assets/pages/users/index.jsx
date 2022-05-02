@@ -7,6 +7,8 @@ import { Inertia } from '@inertiajs/inertia';
 import { Page } from '../../components/templates';
 import { useMemo } from 'react';
 import { CollectionToolbar, Table } from '../../components/oragnisms'
+import { Cell, Column, Row, TableBody, TableHeader } from '@react-stately/table';
+import { useAsyncList } from '@react-stately/data';
 
 const SelectAllCell = ({
    value,
@@ -36,63 +38,75 @@ const SelectCell = ({
 }
 
 export default function users({ users }) {
-   const [ search, setSearch ] = useState(null)
-   const [ selectedRows, setSelectedRows ] = useState([])
-   const columns = useMemo(() => {
-      let cols = Object.keys(users.data[0]).map(ok => ({
-         key: ok,
-         name: ok,
-         sortable: true,
-      }))
-      cols = [{
-         // key: '_check',
-         width: 35,
-         minWidth: 35,
-         maxWidth: 35,
-         resizable: false,
-         sortable: false,
-         frozen: true,
-         headerRenderer(props) {
-            return (
-              <SelectAllCell
-                aria-label="Select All"
-                isCellSelected={props.isCellSelected}
-                value={props.allRowsSelected}
-                onChange={props.onAllRowsSelectionChange}
-              />
-            );
-         },
-         formatter(props) {
-            return (
-              <SelectCell
-                aria-label="Select"
-                isCellSelected={props.isCellSelected}
-                value={props.allRowsSelected}
-                onChange={props.onAllRowsSelectionChange}
-              />
-            );
-         },
-      }, ...cols]
-      return cols
+   const [search, setSearch] = useState(null)
+   let [selectedKeys, setSelectedKeys] = React.useState(new Set([2]));
 
-   }, [])
-
+   let list = useAsyncList({
+      async load({ signal }) {
+         let res = await fetch(`https://swapi.py4e.com/api/people/?search`, {
+            signal
+         });
+         let json = await res.json();
+         return {
+            items: users?.data
+         };
+      },
+      async sort({ items, sortDescriptor }) {
+         return {
+            items: items.sort((a, b) => {
+               let first = a[sortDescriptor.column];
+               let second = b[sortDescriptor.column];
+               let cmp = (parseInt(first) || first) < (parseInt(second) || second)
+                  ? -1
+                  : 1;
+               if (sortDescriptor.direction === 'descending') {
+                  cmp *= -1;
+               }
+               return cmp;
+            })
+         };
+      }
+   });
+   if (!users) {
+      return null
+   }
    return (
       <Page title={'Users'}>
-         <CollectionToolbar />
+         <CollectionToolbar
+            selectedRows={selectedKeys}
+            onDeleteMany={rows => {
+
+               console.log(Array.from(selectedKeys))
+            }}
+         />
          <Page.Section>
             <Table
-               className="rdg-light"
-               columns={columns}
-               rows={users.data}
-               defaultColumnOptions={{
-                  sortable: true,
-                  resizable: true
-               }}
-               selectedRows={selectedRows}
-               onSelectedRowsChange={setSelectedRows}
+               aria-label="Example static collection table"
+               selectionMode="multiple"
+               sortDescriptor={list.sortDescriptor}
+               onSortChange={list.sort}
+               pagination={users}
+               selectedKeys={selectedKeys}
+               onSelectionChange={setSelectedKeys}
 
-            />
+            >
+               <TableHeader>
+                  <Column key={'name'} allowsSorting>Name</Column>
+                  <Column key={'username'} allowsSorting>Username</Column>
+                  <Column key={'email'} allowsSorting>Email</Column>
+                  <Column key={'phone_number'} allowsSorting>Mobile number</Column>
+                  <Column key={'created_at'} allowsSorting>Created at</Column>
+                  <Column key={'updated_at'} allowsSorting>Updated at</Column>
+                  {/* <Column allowsSorting>Date Modified</Column> */}
+               </TableHeader>
+               <TableBody items={list.items}>
+                  {(item) => (
+                     <Row key={item.name}>
+                        {(columnKey) => <Cell textValue={item[columnKey]} >{item[columnKey]}</Cell>}
+                     </Row>
+                  )}
+               </TableBody>
+            </Table>
          </Page.Section>
 
          {/* {JSON.stringify(users)} */}
