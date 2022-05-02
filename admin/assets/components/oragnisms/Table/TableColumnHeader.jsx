@@ -17,9 +17,9 @@ export default function TableColumnHeader({ column, state }) {
       <th
          {...mergeProps(columnHeaderProps, focusProps)}
          colSpan={column.colspan}
+         className="border-b dark:border-slate-600 font-medium p-3 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left"
          style={{
             textAlign: column.colspan > 1 ? 'center' : 'left',
-            padding: '5px 10px',
             outline: isFocusVisible ? '2px solid orange' : 'none',
             cursor: 'default'
          }}

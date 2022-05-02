@@ -25,6 +25,8 @@ export default function TableSelectAllCell({ column, state }) {
       <th
          {...columnHeaderProps}
          ref={ref}
+         className="border-b w-2 dark:border-slate-600 font-medium p-3 pl-6 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left"
+         style={{ width: '20px' }}
       >
          {state.selectionManager.selectionMode === 'single'
             ? <VisuallyHidden>{inputProps['aria-label']}</VisuallyHidden>

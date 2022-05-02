@@ -13,9 +13,10 @@ export default function TableRow({ item, children, state }) {
 
    return (
       <tr
+         className={`${isSelected ? 'bg-blue-50': ''}`}
          style={{
             background: isSelected
-               ? 'blueviolet'
+               ? ''
                : isPressed
                   ? 'var(--spectrum-global-color-gray-400)'
                   : item.index % 2

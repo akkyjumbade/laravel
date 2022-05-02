@@ -11,8 +11,8 @@ export default function TableCell({ cell, state }) {
    return (
       <td
          {...mergeProps(gridCellProps, focusProps)}
+         className="border-b border-slate-100 dark:border-slate-700 p-3 text-slate-500 dark:text-slate-400"
          style={{
-            padding: '5px 10px',
             outline: isFocusVisible ? '2px solid orange' : 'none',
             cursor: 'default'
          }}

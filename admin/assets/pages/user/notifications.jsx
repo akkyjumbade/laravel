@@ -19,7 +19,6 @@ export default function notifications({ notifications }) {
             {/* {JSON.stringify(notifications)} */}
             <Table
                aria-label="Example static collection table"
-               style={{ height: '210px', maxWidth: '400px' }}
                selectionMode="multiple"
                >
                <TableHeader>

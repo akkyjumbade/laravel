@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[374],{9374:(e,r,i)=>{i.r(r),i.d(r,{default:()=>d});var n=i(1636),s=(i(7294),i(5893));function d(){return(0,s.jsxs)("div",{children:["Home",(0,s.jsx)(n.ZQ,{href:route("admin.profile"),children:"Profile"}),(0,s.jsx)(n.ZQ,{href:route("admin.teams.index"),children:"Teams"})]})}}}]);

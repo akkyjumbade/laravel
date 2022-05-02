@@ -21,6 +21,8 @@ export default function TableCheckboxCell({ cell, state }) {
    return (
       <td
          {...gridCellProps}
+         className="border-b border-slate-100 dark:border-slate-700 p-3 pl-6 text-slate-500 dark:text-slate-400"
+         style={{ width: '20px' }}
          ref={ref}
       >
          <input {...inputProps} />

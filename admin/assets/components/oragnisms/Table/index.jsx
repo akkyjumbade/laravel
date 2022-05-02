@@ -31,46 +31,53 @@ export default function Table(props) {
    let { gridProps } = useTable(props, state, ref);
 
    return (
-      <table {...gridProps} ref={ref} style={{ borderCollapse: 'collapse' }}>
-         <TableRowGroup
-            type="thead"
-            style={{
-               borderBottom: '2px solid var(--spectrum-global-color-gray-800)'
-            }}
-         >
-            {collection.headerRows.map((headerRow) => (
-               <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
-                  {[...headerRow.childNodes].map((column) =>
-                     column.props.isSelectionCell
-                        ? (
-                           <TableSelectAllCell
-                              key={column.key}
-                              column={column}
-                              state={state}
-                           />
-                        )
-                        : (
-                           <TableColumnHeader
-                              key={column.key}
-                              column={column}
-                              state={state}
-                           />
-                        )
-                  )}
-               </TableHeaderRow>
-            ))}
-         </TableRowGroup>
-         <TableRowGroup type="tbody">
-            {[...collection.body.childNodes].map((row) => (
-               <TableRow key={row.key} item={row} state={state}>
-                  {[...row.childNodes].map((cell) =>
-                     cell.props.isSelectionCell
-                        ? <TableCheckboxCell key={cell.key} cell={cell} state={state} />
-                        : <TableCell key={cell.key} cell={cell} state={state} />
-                  )}
-               </TableRow>
-            ))}
-         </TableRowGroup>
-      </table>
+      <div className='not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25'>
+         <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]" style={{ backgroundPosition: '10px 10px' }} />
+         <div className="relative rounded-xl overflow-auto">
+            <div className="shadow-sm overflow-hidden my-6">
+               <table className="border-collapse table-auto w-full text-sm" {...gridProps} ref={ref}  style={{ borderCollapse: 'collapse' }}>
+                  <TableRowGroup
+                     type="thead"
+                     style={{
+                        borderBottom: '2px solid var(--spectrum-global-color-gray-800)'
+                     }}
+                  >
+                     {collection.headerRows.map((headerRow) => (
+                        <TableHeaderRow key={headerRow.key} item={headerRow} state={state}>
+                           {[...headerRow.childNodes].map((column) =>
+                              column.props.isSelectionCell
+                                 ? (
+                                    <TableSelectAllCell
+                                       key={column.key}
+                                       column={column}
+                                       state={state}
+                                    />
+                                 )
+                                 : (
+                                    <TableColumnHeader
+                                       key={column.key}
+                                       column={column}
+                                       state={state}
+                                    />
+                                 )
+                           )}
+                        </TableHeaderRow>
+                     ))}
+                  </TableRowGroup>
+                  <TableRowGroup type="tbody" >
+                     {[...collection.body.childNodes].map((row) => (
+                        <TableRow key={row.key} item={row} state={state}>
+                           {[...row.childNodes].map((cell) =>
+                              cell.props.isSelectionCell
+                                 ? <TableCheckboxCell key={cell.key} cell={cell} state={state} />
+                                 : <TableCell key={cell.key} cell={cell} state={state} />
+                           )}
+                        </TableRow>
+                     ))}
+                  </TableRowGroup>
+               </table>
+            </div>
+         </div>
+      </div>
    );
 }
