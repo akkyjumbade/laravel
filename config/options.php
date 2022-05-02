@@ -1,7 +1,5 @@
 <?php
 
-use Modules\LaravelPreset\Console\Commands\AdminExportCommand;
-use Modules\LaravelPreset\Console\Commands\SetupCommand;
 
 return [
    'title' => env('APP_NAME'),
@@ -34,17 +32,12 @@ return [
 
    /* Blade components */
    'blade_components' => [
-      \Modules\LaravelPreset\Components\Header::class,
-      \Modules\LaravelPreset\Components\Sidebar::class,
+
    ],
 
    /* Console commands to register in service provider */
    'commands' => [
-      // \Modules\LaravelPreset\Console\Commands\LocaleUpdatePackageCommand::class,
-      // SetupCommand::class,
-      // AdminExportCommand::class,
-      // \Modules\LaravelPreset\Console\Commands\AdminCreateCommand::class,
-      // \Modules\LaravelPreset\Console\Commands\ModuleCreateCommand::class,
+
    ],
 
    /* Roles */

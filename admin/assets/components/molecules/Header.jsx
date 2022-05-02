@@ -1,4 +1,5 @@
 import { InertiaLink } from "@inertiajs/inertia-react";
+import { route } from "../../utils";
 
 export default function Header() {
    return (
@@ -6,7 +7,7 @@ export default function Header() {
          <div className="container mx-auto">
             <div className="flex">
                <div className="md:w-32">
-                  <InertiaLink href="/cp">Logo</InertiaLink>
+                  <InertiaLink href={route('admin')}>Logo</InertiaLink>
                </div>
                <div className="flex-1">
                   center
