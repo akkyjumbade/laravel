@@ -1,21 +1,32 @@
 import { useFocusRing } from '@react-aria/focus';
-import { useOption } from '@react-aria/listbox';
+import { useTableRow } from '@react-aria/table';
 import { mergeProps } from '@react-aria/utils';
-import React from 'react'
+import { useRef } from 'react';
 
-export default function TableRow({ item, state, ...props }) {
-   let ref = React.useRef();
-   let { optionProps, isSelected, isDisabled } = useOption(
-      { key: item.key },
-      state,
-      ref
-   );
+export default function TableRow({ item, children, state }) {
+   let ref = useRef();
+   let isSelected = state.selectionManager.isSelected(item.key);
+   let { rowProps, isPressed } = useTableRow({
+      node: item
+   }, state, ref);
    let { isFocusVisible, focusProps } = useFocusRing();
 
-   console.log({ row: props, item, state })
    return (
-      <tr {...props} {...mergeProps(optionProps, focusProps)}>
-         {item.rendered}
+      <tr
+         style={{
+            background: isSelected
+               ? 'blueviolet'
+               : isPressed
+                  ? 'var(--spectrum-global-color-gray-400)'
+                  : item.index % 2
+                     ? 'var(--spectrum-alias-highlight-hover)'
+                     : 'none',
+            color: isSelected ? 'white' : null,
+            outline: isFocusVisible ? '2px solid orange' : 'none'
+         }}
+         {...mergeProps(rowProps, focusProps)}
+         ref={ref}>
+         {children}
       </tr>
-   )
+   );
 }
