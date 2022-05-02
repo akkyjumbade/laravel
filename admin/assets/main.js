@@ -8,7 +8,7 @@ InertiaProgress.init()
 import { default as Bootstrap } from './App'
 
 createInertiaApp({
-   resolve: name => require(`./pages/${name}`),
+   resolve: name => import(`./pages/${name}`),
    setup({ el, App, props }) {
       render((
          <Bootstrap>
