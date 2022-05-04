@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class {{ class }} extends Controller
 {
+    public function __construct() {
+        // $this->middleware('', [ 'except' => [  ] ]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\GeoLocation;
 
 class ApiController extends Controller
 {
-   use \App\Traits\GeoLocationsTrait;
 
    function index() {
       $data = [];
@@ -29,20 +27,4 @@ class ApiController extends Controller
       return response()->success($data);
    }
 
-   function geoLocations(Request $req) {
-      $postal_code = $req->query('postal_code');
-      try {
-         $data = $this->getPostalCodeData($postal_code);
-         // dd($data);
-         return response()->success([
-            'data' => @$data,
-         ]);
-      } catch (\Throwable $th) {
-         // throw $th;
-         return response()->error([
-            'msg' => $th->getMessage(),
-         ]);
-      }
-
-   }
 }

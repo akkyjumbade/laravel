@@ -17,6 +17,17 @@ class UserObserver
     */
    public function saving(User $user)
    {
+      
+
+   }
+   /**
+    * Handle the User "created" event.
+    *
+    * @param  \App\Models\User  $user
+    * @return void
+    */
+   public function created(User $user)
+   {
       if (!$user->username) {
          $user->username = $user->phone ?? $user->email;
       }
@@ -29,19 +40,6 @@ class UserObserver
       }
       if (!$user->uuid) {
          $user->uuid = Str::uuid();
-      }
-
-   }
-   /**
-    * Handle the User "created" event.
-    *
-    * @param  \App\Models\User  $user
-    * @return void
-    */
-   public function created(User $user)
-   {
-      if (!$user->username) {
-         $user->username = uniqid();
       }
       $user->save();
       $user->teams()->create([

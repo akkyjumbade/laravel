@@ -5,14 +5,17 @@ Laravel setup
 
 ### Install with one command
 Or clean the db and seed
+```php artisan key:generate```
 
-```php artisan migrate:fresh && php -d memory_limit=-1 artisan db:seed```
+```php artisan jwt:secret```
+
+```php artisan migrate:fresh --seed```
 
 ### Create a admin user
 ```php artisan admin:create```
 
 
 ### Admin login
-Username: 1234567890
+Username: admin
 
 Password: secret

@@ -8,14 +8,21 @@ use Illuminate\Http\Request;
 
 class {{ class }} extends Controller
 {
+
+    public function __construct() {
+        // $this->middleware('', [ 'except' => [  ] ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view("{{ modelVariable }}/index", [
+            '{{ modelVariable }}' => ${{ modelVariable }},
+        ]);
     }
 
     /**
@@ -23,9 +30,12 @@ class {{ class }} extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        ${{ modelVariable }} = new {{ model }};
+        return view("{{ modelVariable }}/create", [
+            '{{ modelVariable }}' => ${{ modelVariable }},
+        ]);
     }
 
     /**
@@ -36,7 +46,15 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->validated();
+        try {
+            ${{ modelVariable }} = {{ model }}::create($inputs);
+            return redirect()->back()->withSuccess(
+                __('resource-stored', [ 'name' => '{{ modelVariable }}' ])
+            );
+        } catch(\Throwable $th) {
+            return redirect()->back()->withException($th);
+        }
     }
 
     /**
@@ -45,9 +63,12 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function show({{ model }} ${{ modelVariable }})
+    public function show(Request $request, {{ model }} ${{ modelVariable }})
     {
-        //
+        // load anything.
+        return view("{{ modelVariable }}/show", [
+            '{{ modelVariable }}' => ${{ modelVariable }},
+        ]);
     }
 
     /**
@@ -56,9 +77,12 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function edit({{ model }} ${{ modelVariable }})
+    public function edit(Request $request, {{ model }} ${{ modelVariable }})
     {
-        //
+        // load anything.
+        return view("{{ modelVariable }}/edit", [
+            '{{ modelVariable }}' => ${{ modelVariable }},
+        ]);
     }
 
     /**
@@ -70,7 +94,15 @@ class {{ class }} extends Controller
      */
     public function update(Request $request, {{ model }} ${{ modelVariable }})
     {
-        //
+        $inputs = $request->validated();
+        try {
+            ${{ modelVariable }}->update($inputs);
+            return redirect()->back()->withSuccess(
+                __('resource-updated', [ 'name' => '{{ modelVariable }}' ])
+            );
+        } catch(\Throwable $th) {
+            return redirect()->back()->withException($th);
+        }
     }
 
     /**
@@ -81,6 +113,13 @@ class {{ class }} extends Controller
      */
     public function destroy({{ model }} ${{ modelVariable }})
     {
-        //
+        try {
+            ${{ modelVariable }}->delete();
+            return redirect()->back()->withSuccess(
+                __('resource-deleted', [ 'name' => '{{ modelVariable }}' ])
+            );
+        } catch(\Throwable $th) {
+            return redirect()->back()->withException($th);
+        }
     }
 }

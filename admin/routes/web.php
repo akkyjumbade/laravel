@@ -10,8 +10,8 @@ use \Admin\Http\Controllers\{
    SettingController,
    StorageController,
    BroadcastController,
-    TaxonomyController,
-    TeamController,
+   TaxonomyController,
+   TeamController,
 };
 use Admin\Http\Controllers\User\NotificationController;
 use Admin\Http\Controllers\User\ProfileController;
