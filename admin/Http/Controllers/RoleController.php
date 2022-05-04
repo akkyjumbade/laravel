@@ -18,11 +18,24 @@ class RoleController extends Controller
          'roles'
       ));
    }
+
+   function acl(Request $request) {
+      $roles = null;
+      $permissions = null;
+      if ($request->user()->isAdmin()) {
+         $roles = Role::latest()->with('permissions')->paginate(100);
+         $permissions = Permission::latest()->with('roles')->paginate(100);
+      }
+      return inertia('acl/index', compact(
+         'roles', 'permissions'
+      ));
+   }
+
    function create() {
       $permissions = Permission::get();
       $role = new Role();
-      return view('admin::roles.create', compact(
-         'permissions', 'role'
+      return inertia('acl/index', compact(
+         'role', 'permissions'
       ));
    }
 
@@ -50,7 +63,8 @@ class RoleController extends Controller
    }
    function show(Request $req, Role $role) {
       $permissions = Permission::select([ 'title as label', 'id as value' ])->get();
-      return view('admin::roles.show', compact(
+      $role->load('permissions', 'children.children.children');
+      return inertia('acl/show', compact(
          'permissions', 'role'
       ));
    }

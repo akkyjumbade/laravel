@@ -31,8 +31,10 @@ Route::group([
    Route::get('settings', [SettingController::class, 'index'])->name('settings');
    Route::get('storage', [StorageController::class, 'index'])->name('index');
    Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
-
+   // Access control list
+   Route::get('acl', [RoleController::class, 'acl'])->name('acl');
    Route::resource('roles', RoleController::class)->names('roles');
+   Route::resource('roles.permissions', PermissionController::class)->names('permissions');
    Route::resource('permissions', PermissionController::class)->names('permissions');
    Route::resource('categories', CategoryController::class)->names('categories');
    Route::resource('taxonomies', TaxonomyController::class)->names('taxonomies');

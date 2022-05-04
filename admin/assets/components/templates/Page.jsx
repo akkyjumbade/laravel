@@ -1,10 +1,12 @@
 import { usePage } from "@inertiajs/inertia-react"
+import Breadcrumb from "../molecules/Breadcrumb"
 
 export default function Page({ title, children }) {
    const { props: { errors } } = usePage()
    return (
       <>
          <header className="container mx-auto py-3">
+            <Breadcrumb title={title} />
             {title && (
             <h1 className="leading-10 text-3xl font-bold">{title}</h1>
             )}

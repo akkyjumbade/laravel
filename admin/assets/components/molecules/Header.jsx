@@ -17,17 +17,17 @@ const Menus = () => {
       <nav className="flex items-center ">
          <ol className="flex-1 flex items-center gap-3">
             <li>
-               <InertiaLink href={route('admin.dashboard')} className="px-3 py-1 leading-6 rounded-lg hover:text-blue-900 hover:bg-gray-100">
+               <InertiaLink href={route('admin.dashboard')} className="px-3 py-1 leading-6 rounded-lg hover:text-gray-900 hover:bg-slate-100">
                   Home
                </InertiaLink>
             </li>
             <li>
-               <InertiaLink href={route('admin.users.index')} className="px-3 py-1 leading-6 rounded-lg hover:text-blue-900 hover:bg-gray-100">
+               <InertiaLink href={route('admin.users.index')} className="px-3 py-1 leading-6 rounded-lg hover:text-gray-900 hover:bg-slate-100">
                   Users
                </InertiaLink>
             </li>
             <li>
-               <InertiaLink href={route('admin.users.index')} className="px-3 py-1 leading-6 rounded-lg hover:text-blue-900 hover:bg-gray-100">
+               <InertiaLink href={route('admin.acl')} className="px-3 py-1 leading-6 rounded-lg hover:text-gray-900 hover:bg-slate-100">
                   Access Control
                </InertiaLink>
             </li>

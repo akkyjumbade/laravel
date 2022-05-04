@@ -102,14 +102,25 @@ export default function users({ users }) {
                <TableBody items={list.items}>
                   {(item) => (
                      <Row key={item.name}>
-                        {(columnKey) => <Cell textValue={item[columnKey]} >{item[columnKey]}</Cell>}
+                        <Cell key={'name'} allowsSorting>
+                           <InertiaLink className='hover:underline flex items-center gap-2 text-blue-600' style={{ width: '250px' }}>
+                              <img className='w-8 h-8 rounded-full bg-gray-300' />
+                              <div>
+                                 {item.name}
+                              </div>
+                           </InertiaLink>
+                        </Cell>
+                        <Cell>{item.username}</Cell>
+                        <Cell>{item.email}</Cell>
+                        <Cell>{item.mobile_number}</Cell>
+                        <Cell>{item.created_at}</Cell>
+                        <Cell>{item.updated_at}</Cell>
+                        {/* {(columnKey) => <Cell textValue={item[columnKey]} >{item[columnKey]}</Cell>} */}
                      </Row>
                   )}
                </TableBody>
             </Table>
          </Page.Section>
-
-         {/* {JSON.stringify(users)} */}
       </Page>
    )
 }
