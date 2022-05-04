@@ -103,7 +103,7 @@ export default function users({ users }) {
                   {(item) => (
                      <Row key={item.name}>
                         <Cell key={'name'} allowsSorting>
-                           <InertiaLink className='hover:underline flex items-center gap-2 text-blue-600' style={{ width: '250px' }}>
+                           <InertiaLink href={route('admin.users.show', item.id)} className='hover:underline flex items-center gap-2 text-blue-600' style={{ width: '250px' }}>
                               <img className='w-8 h-8 rounded-full bg-gray-300' />
                               <div>
                                  {item.name}

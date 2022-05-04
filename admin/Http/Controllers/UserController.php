@@ -50,13 +50,14 @@ class UserController extends Controller
       }
    }
    function show(UserRequest $req, User $user) {
-      return view('admin::users.show', compact(
+      $user->load('roles.permissions', 'teams', 'team');
+      return inertia('users/show', compact(
          'user',
       ));
    }
    function edit(UserRequest $req, User $user) {
       $roles = Role::select(['id as value', 'title as label'])->get()->toArray();
-      return view('admin::users.create', compact(
+      return inertia('users/create', compact(
          'user', 'roles'
       ));
    }

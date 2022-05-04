@@ -13,7 +13,6 @@
     "devDependencies": {
         "@babel/preset-react": "^7.16.7",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-rc.0",
-        "@tailwindcss/forms": "^0.2.1",
         "alpinejs": "^2.7.3",
         "autoprefixer": "^10.1.0",
         "axios": "^0.21",
@@ -49,9 +48,10 @@
         "formik": "^2.2.9",
         "framer-motion": "^6.3.3",
         "react": "^18.0.0",
-        "react-data-grid": "^7.0.0-beta.12",
         "react-dom": "^18.0.0",
         "react-headroom": "^3.2.0",
+        "react-hot-toast": "^2.2.0",
+        "react-query": "^3.38.1",
         "yup": "^0.32.11"
     }
 }
