@@ -15,7 +15,7 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedParentModel }}  ${{ parentModelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function index({{ parentModel }} ${{ parentModelVariable }})
+    public function index(Request $request, {{ parentModel }} ${{ parentModelVariable }})
     {
         //
     }
@@ -26,7 +26,7 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedParentModel }}  ${{ parentModelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function create({{ parentModel }} ${{ parentModelVariable }})
+    public function create(Request $request, {{ parentModel }} ${{ parentModelVariable }})
     {
         //
     }
@@ -50,7 +50,7 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function show({{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
+    public function show(Request $request, {{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
     {
         //
     }
@@ -62,7 +62,7 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function edit({{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
+    public function edit(Request $request, {{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
     {
         //
     }
@@ -87,7 +87,7 @@ class {{ class }} extends Controller
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
+    public function destroy(Request $request, {{ parentModel }} ${{ parentModelVariable }}, {{ model }} ${{ modelVariable }})
     {
         //
     }
