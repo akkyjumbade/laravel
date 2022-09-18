@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Admin\Traits\HasTeams;
 use Admin\Traits\UseAccessControl;
+use App\Models\Scopes\ActiveUserScope;
+use App\Traits\JWTAUthTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,6 +19,7 @@ class User extends Authenticatable  implements JWTSubject
    use HasApiTokens, HasFactory, Notifiable;
    use UseAccessControl;
    use HasTeams;
+   use JWTAUthTrait;
 
    /**
     * The attributes that are mass assignable.
@@ -60,30 +63,20 @@ class User extends Authenticatable  implements JWTSubject
    ];
    // Rest omitted for brevity
 
-   /**
-    * Get the identifier that will be stored in the subject claim of the JWT.
-    *
-    * @return mixed
-    */
-   public function getJWTIdentifier()
+   function getAvatarAttribute($value)
    {
-      return $this->getKey();
-   }
-
-   /**
-    * Return a key value array, containing any custom claims to be added to the JWT.
-    *
-    * @return array
-    */
-   public function getJWTCustomClaims()
-   {
-      return [];
-   }
-
-   function getAvatarAttribute($value) {
       if ($value) {
          return url($value);
       }
       return "https://gravatar.com/avatar/bcbab1705da3795a0a8ccd415b7f79da?s=400";
+   }
+   /**
+    * The "booted" method of the model.
+    *
+    * @return void
+    */
+   protected static function booted()
+   {
+      static::addGlobalScope(new ActiveUserScope);
    }
 }

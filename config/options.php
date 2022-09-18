@@ -6,8 +6,8 @@ return [
    'url_prefix' => 'admin',
 
    /* Default options */
-   'time_format' => 'H:i:s',
-   'date_format' => 'Y-m-d',
+   'time_format' => env('TIME_FORMAT', 'H:i:s'),
+   'date_format' => env('DATE_FORMAT', 'Y-m-d'),
    'timezone' => env('APP_LOCALE'),
    'default_user_status' => 'pending',
    'default_country' => env('DEFAULT_COUNTRY', 'IN'),
@@ -38,22 +38,6 @@ return [
    /* Console commands to register in service provider */
    'commands' => [
 
-   ],
-
-   /* Roles */
-   'roles' => [
-      [
-         'label' => 'User',
-         'value' => 'user',
-      ],
-      [
-         'label' => 'Admin',
-         'value' => 'admin',
-      ],
-      [
-         'label' => 'Root',
-         'value' => 'root',
-      ],
    ],
 
    /* Permissions */

@@ -67,7 +67,9 @@ return [
     |
     */
 
-   'timezone' => 'UTC',
+   'origin_country' => env('ORIGIN_COUNTRY', 'IN'),
+
+   'timezone' => env('DEFAULT_TIMEZONE', 'UTC'),
 
    /*
     |--------------------------------------------------------------------------

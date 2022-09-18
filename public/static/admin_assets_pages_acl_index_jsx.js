@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["admin_assets_pages_users_index_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["admin_assets_pages_acl_index_jsx"],{
 
 /***/ "./node_modules/@babel/runtime/regenerator/index.js":
 /*!**********************************************************!*\
@@ -1182,29 +1182,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./admin/assets/pages/users/index.jsx":
-/*!********************************************!*\
-  !*** ./admin/assets/pages/users/index.jsx ***!
-  \********************************************/
+/***/ "./admin/assets/pages/acl/index.jsx":
+/*!******************************************!*\
+  !*** ./admin/assets/pages/acl/index.jsx ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ users)
+/* harmony export */   "default": () => (/* binding */ acl)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module 'react-data-grid'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _components_templates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/templates */ "./admin/assets/components/templates/index.js");
-/* harmony import */ var _components_oragnisms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/oragnisms */ "./admin/assets/components/oragnisms/index.js");
-/* harmony import */ var _react_stately_table__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @react-stately/table */ "./node_modules/@react-stately/table/dist/module.js");
-/* harmony import */ var _react_stately_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @react-stately/data */ "./node_modules/@react-stately/data/dist/module.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _react_stately_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @react-stately/data */ "./node_modules/@react-stately/data/dist/module.js");
+/* harmony import */ var _react_stately_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @react-stately/table */ "./node_modules/@react-stately/table/dist/module.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_oragnisms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/oragnisms */ "./admin/assets/components/oragnisms/index.js");
+/* harmony import */ var _components_templates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/templates */ "./admin/assets/components/templates/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils */ "./admin/assets/utils/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1223,7 +1222,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
- // import { Inertia } from "@inertiajs/inertia";
 
 
 
@@ -1234,69 +1232,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function acl(_ref) {
+  var roles = _ref.roles;
 
-
-
-var SelectAllCell = function SelectAllCell(_ref) {
-  var value = _ref.value,
-      isCellSelected = _ref.isCellSelected,
-      disabled = _ref.disabled,
-      onChange = _ref.onChange,
-      ariaLabel = _ref['aria-label'],
-      ariaLabelledBy = _ref['aria-labelledby'];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-    disabled: disabled,
-    value: value,
-    type: 'checkbox',
-    checked: isCellSelected,
-    onChange: onChange
-  });
-};
-
-var SelectCell = function SelectCell(_ref2) {
-  var value = _ref2.value,
-      isCellSelected = _ref2.isCellSelected,
-      disabled = _ref2.disabled,
-      onChange = _ref2.onChange,
-      ariaLabel = _ref2['aria-label'],
-      ariaLabelledBy = _ref2['aria-labelledby'];
-
-  var _useRowSelection = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'react-data-grid'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(),
-      _useRowSelection2 = _slicedToArray(_useRowSelection, 2),
-      isRowSelected = _useRowSelection2[0],
-      onRowSelectionChange = _useRowSelection2[1];
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-    disabled: disabled,
-    value: value,
-    type: 'checkbox',
-    checked: isCellSelected,
-    onChange: onChange
-  });
-};
-
-function users(_ref3) {
-  var users = _ref3.users;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      search = _useState2[0],
-      setSearch = _useState2[1];
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(new Set([2])),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_2___default().useState(new Set([2])),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       selectedKeys = _React$useState2[0],
       setSelectedKeys = _React$useState2[1];
 
-  var list = (0,_react_stately_data__WEBPACK_IMPORTED_MODULE_8__.useAsyncList)({
-    load: function load(_ref4) {
+  var list = (0,_react_stately_data__WEBPACK_IMPORTED_MODULE_7__.useAsyncList)({
+    load: function load(_ref2) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var signal, res, json;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                signal = _ref4.signal;
+                signal = _ref2.signal;
                 _context.next = 3;
                 return fetch("https://swapi.py4e.com/api/people/?search", {
                   signal: signal
@@ -1310,7 +1262,7 @@ function users(_ref3) {
               case 6:
                 json = _context.sent;
                 return _context.abrupt("return", {
-                  items: users === null || users === void 0 ? void 0 : users.data
+                  items: roles === null || roles === void 0 ? void 0 : roles.data
                 });
 
               case 8:
@@ -1321,14 +1273,14 @@ function users(_ref3) {
         }, _callee);
       }))();
     },
-    sort: function sort(_ref5) {
+    sort: function sort(_ref3) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var items, sortDescriptor;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                items = _ref5.items, sortDescriptor = _ref5.sortDescriptor;
+                items = _ref3.items, sortDescriptor = _ref3.sortDescriptor;
                 return _context2.abrupt("return", {
                   items: items.sort(function (a, b) {
                     var first = a[sortDescriptor.column];
@@ -1352,74 +1304,67 @@ function users(_ref3) {
       }))();
     }
   });
-
-  if (!users) {
-    return null;
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_components_templates__WEBPACK_IMPORTED_MODULE_5__.Page, {
-    title: 'Users',
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_6__.CollectionToolbar, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_components_templates__WEBPACK_IMPORTED_MODULE_4__.Page, {
+    title: 'Roles & permissions',
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_3__.CollectionToolbar, {
       selectedRows: selectedKeys,
+      actions: [{
+        key: 'create',
+        label: 'New user',
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          children: "Click to new"
+        })
+      }, {
+        key: 'delete',
+        label: 'Delete',
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          children: "Delete selected"
+        })
+      }],
+      onAction: function onAction(actionName) {
+        return alert('Action: ' + actionName);
+      },
       onDeleteMany: function onDeleteMany(rows) {
         console.log(Array.from(selectedKeys));
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_templates__WEBPACK_IMPORTED_MODULE_5__.Page.Section, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_6__.Table, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_templates__WEBPACK_IMPORTED_MODULE_4__.Page.Section, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_components_oragnisms__WEBPACK_IMPORTED_MODULE_3__.Table, {
         "aria-label": "Example static collection table",
         selectionMode: "multiple",
         sortDescriptor: list.sortDescriptor,
         onSortChange: list.sort,
-        pagination: users,
+        pagination: roles,
         selectedKeys: selectedKeys,
         onSelectionChange: setSelectedKeys,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.TableHeader, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.TableHeader, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Column, {
             allowsSorting: true,
-            children: "Name"
-          }, 'name'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
+            children: "Title"
+          }, 'title'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Column, {
             allowsSorting: true,
-            children: "Username"
-          }, 'username'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
-            allowsSorting: true,
-            children: "Email"
-          }, 'email'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
-            allowsSorting: true,
-            children: "Mobile number"
-          }, 'phone_number'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
+            children: "Description"
+          }, 'description'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Column, {
             allowsSorting: true,
             children: "Created at"
-          }, 'created_at'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Column, {
+          }, 'created_at'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Column, {
             allowsSorting: true,
             children: "Updated at"
           }, 'updated_at')]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.TableBody, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.TableBody, {
           items: list.items,
           children: function children(item) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Row, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
-                allowsSorting: true,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.InertiaLink, {
-                  href: route('admin.users.show', item.id),
-                  className: "hover:underline flex items-center gap-2 text-blue-600",
-                  style: {
-                    width: '250px'
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                    className: "w-8 h-8 rounded-full bg-gray-300"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                    children: item.name
-                  })]
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Row, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Cell, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.InertiaLink, {
+                  className: "text-blue-700",
+                  href: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.route)('admin.roles.show', item.id),
+                  children: item.title
                 })
-              }, 'name'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
-                children: item.username
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
-                children: item.email
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
-                children: item.mobile_number
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Cell, {
+                children: item.description
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Cell, {
                 children: item.created_at
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_9__.Cell, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_stately_table__WEBPACK_IMPORTED_MODULE_8__.Cell, {
                 children: item.updated_at
               })]
             }, item.name);

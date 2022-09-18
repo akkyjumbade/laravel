@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
    ApiController,
+    FeedController,
 };
 
 /*
@@ -21,13 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
    return $request->user();
 });
 
-
-Route::get('/', [ ApiController::class, 'index']);
-
-Route::group([
-   'middleware' => [
-      \App\Http\Middleware\JwtMiddleware::class
-   ]
-], function () {
-
-});
+Route::get('/', ApiController::class);
+Route::get('/feed', FeedController::class);

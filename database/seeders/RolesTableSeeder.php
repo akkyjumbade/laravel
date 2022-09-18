@@ -15,7 +15,6 @@ class RolesTableSeeder extends Seeder
     */
    public function run()
    {
-      // $roles = config('options.roles');
 
       try {
          DB::beginTransaction();

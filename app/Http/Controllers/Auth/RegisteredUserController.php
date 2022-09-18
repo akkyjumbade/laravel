@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -29,11 +30,11 @@ class RegisteredUserController extends Controller
          'first_name' => ['required', 'string', 'max:255'],
          'middle_name' => ['nullable', 'string', 'max:255'],
          'last_name' => ['nullable', 'string', 'max:255'],
-         'phone' => ['required', 'string', 'max:12', 'unique:users'],
+         'phone' => ['required', 'string', 'min:10', 'max:15', 'unique:users'],
          'username' => ['nullable', 'string', 'max:255', 'unique:users'],
          'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
          'password' => ['nullable', 'min:6', 'max:20'],
-         'dob' => ['nullable', 'string', 'max:255', ],
+         'birth_date' => ['nullable', 'string', 'max:255', ],
          // Address details
          'address' => ['nullable', 'string', 'max:255', ],
          'address_2' => ['nullable', 'string', 'max:255', ],
@@ -43,12 +44,6 @@ class RegisteredUserController extends Controller
          'country' => ['nullable', 'string', 'max:255', ],
          // Bio
          'gender' => ['nullable', 'string', 'max:255', ],
-         'last_blood_donor_date' => ['nullable', 'string', 'max:255', ],
-         'smoking' => ['nullable', 'string', 'max:255', ],
-         'alcohal' => ['nullable', 'string', 'max:255', ],
-         'veg_nonveg' => ['nullable', 'string', 'max:255', ],
-         'medial_history' => ['nullable', 'string', 'max:255', ],
-         'blood_group' => ['nullable', 'string', 'max:255', ],
          // Token
          'push_notification_token' => ['nullable', 'string', ],
       ];
@@ -64,7 +59,8 @@ class RegisteredUserController extends Controller
    public function store(Request $request)
    {
       $request->validate($this->rules());
-      \DB::beginTransaction();
+      $user = null;
+      DB::beginTransaction();
       try {
          $user = User::create([
             'name' => $request->first_name,
@@ -72,7 +68,7 @@ class RegisteredUserController extends Controller
             'middle_name' => $request->input('middle_name'),
             'last_name' => $request->input('last_name'),
             'gender' => $request->input('gender'),
-            'birth_date' => $request->input('dob'),
+            'birth_date' => $request->input('birth_date'),
             'email' => $request->input('email', ''),
             'phone' => $request->input('phone', ''),
             'username' => $request->input('username', ''),
@@ -81,23 +77,7 @@ class RegisteredUserController extends Controller
       } catch (\Throwable $th) {
          throw $th;
       }
-      try {
-         $user->address()->create([
-            'name' => $request->input('first_name'),
-            'address_line' => $request->input('address'),
-            'address_line_2' => $request->input('address_2'),
-            'city' => $request->input('city'),
-            'province' => $request->input('state'),
-            'postal_code' => $request->input('postal_code'),
-            'country' => $request->input('country', 'IN'),
-         ]);
-      } catch (\Throwable $th) {
-         // throw $th;
-         // return response()->error([
-         //    'message' => $th->getMessage()
-         // ]);
-         // DB::rollBack();
-      }
+
       // Store attrs
       DB::commit();
       event(new Registered($user));
@@ -106,8 +86,8 @@ class RegisteredUserController extends Controller
          // $user->load('address');
          $token = auth('jwt')->login($user);
       }
-      // Auth::login($user);
-
+      Auth::login($user);
+      return new UserResource($user);
       if ($request->header('Accept') == 'application/json') {
          return $this->sendUserInfo([
             'message' => 'Registration successful.'

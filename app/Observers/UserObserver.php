@@ -17,7 +17,9 @@ class UserObserver
     */
    public function saving(User $user)
    {
-      
+      if (!$user->uuid) {
+         $user->uuid = Str::uuid();
+      }
 
    }
    /**
@@ -38,9 +40,7 @@ class UserObserver
             $user->first_name = $user->username;
          }
       }
-      if (!$user->uuid) {
-         $user->uuid = Str::uuid();
-      }
+
       $user->save();
       $user->teams()->create([
          'title' => $user->name

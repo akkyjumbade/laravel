@@ -37,8 +37,19 @@ return new class extends Migration
          if (!Schema::hasColumn($table->getTable(), 'username')) {
             $table->string('username');
          }
+         if (!Schema::hasColumn($table->getTable(), 'first_name')) {
+            $table->string('first_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
+         }
          if (!Schema::hasColumn($table->getTable(), 'password')) {
-            $table->string('password');
+            $table->string('password')->nullable();
+         }
+         if (!Schema::hasColumn($table->getTable(), 'gender')) {
+            $table->string('gender')->nullable();
+         }
+         if (!Schema::hasColumn($table->getTable(), 'birth_date')) {
+            $table->date('birth_date')->nullable();
          }
          if (!Schema::hasColumn($table->getTable(), 'authentication_type')) {
             $table->string('authentication_type')->nullable();

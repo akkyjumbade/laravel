@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\Auth\UpdateProfileRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 
 class JWTAuthController extends Controller
@@ -28,14 +29,14 @@ class JWTAuthController extends Controller
     */
    public function login(LoginRequest $req)
    {
-      $phone = $req->input('mobile_no');
+      $phone = $req->input('username');
       $credentials = [
          'username' => $phone,
       ];
       $tmpOtp = cache()->remember("tmp_otp_". $phone, 60 /2, function() {
          return rand(111111, 999999);
       });
-      $msg = "Dear User, Your OTP for login is $tmpOtp Note: The OTP is valid for 30 mins only. Do not share the OTP with anyone.";
+      $msg = __("otp_sms", [ 'otp' => $tmpOtp ]);
 
       try {
          // \Notification::send([ $phone ], new \App\Notifications\SMSNotification($msg, [
@@ -86,17 +87,18 @@ class JWTAuthController extends Controller
     *
     * @return \Illuminate\Http\JsonResponse
     */
-   public function me()
+   public function me(Request $request)
    {
-      $user = auth('jwt')->user();
+      $user = $request->user();
       if ($user) {
-         // $user->with('address');
-         $user->load('address');
-         $customAttrs = $user->custom_attrs;
-         return response()->success([
-            'data' => array_merge($user->toArray(), [
-               'attrs' => $customAttrs
-            ]),
+         $user->load('roles.permissions');
+         $user->load('team');
+         $user->load('teams');
+         $token = $user->refresh();
+         return (new UserResource($user))->additional([
+            'meta' => [
+               'access_token' => $token,
+            ]
          ]);
       }
       return response()->error([

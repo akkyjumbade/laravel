@@ -1,6 +1,5 @@
 <?php
 
-
 /* JWT Auth */
 
 use App\Http\Controllers\Auth\JWTAuthController;
@@ -10,19 +9,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
    'prefix' => 'api',
-   'as' => 'jwt.',
 ], function() {
    Route::post('/login', [ JWTAuthController::class, 'login' ]);
    Route::group([
+      'prefix' => '/user',
       'middleware' => [
          JwtMiddleware::class,
       ]
    ], function ( ) {
-      Route::get('/me', [ JWTAuthController::class, 'me' ]);
-      Route::post('/me/update', [ ProfileController::class, 'update' ]);
+      Route::get('/', [ JWTAuthController::class, 'me' ]);
+      Route::post('/update', [ ProfileController::class, 'update' ]);
       Route::post('/profile', [ ProfileController::class, 'update']);
-      Route::post('/address', [ ProfileController::class, 'updateAddress']);
       Route::post('/profile-photo', [ ProfileController::class, 'updateProfilePhoto']);
+      Route::post('/address', [ ProfileController::class, 'updateAddress']);
       Route::get('/notifications', [ ProfileController::class, 'notifications']);
       Route::post('/notifications/mark_as_read', [ ProfileController::class, 'markAsReadNotification']);
    });

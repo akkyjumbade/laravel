@@ -13,5 +13,6 @@
    "RESOURCES": "RESOURCES",
    "Logout": "Logout",
    "bio": "Bio",
-   "validation_failed": "Please check all required fields."
+   "validation_failed": "Please check all required fields.",
+   "otp_sms": "Dear User, Your OTP for login is :otp Note: The OTP is valid for 30 mins only. Do not share the OTP with anyone."
 }
