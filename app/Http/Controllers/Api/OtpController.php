@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 
 class OtpController extends Controller
 {
@@ -19,7 +20,7 @@ class OtpController extends Controller
             return rand(111111, 999999);
          });
          $msg = "Dear User, Your OTP for login is $tmpOtp Note: The OTP is valid for 30 mins only. Do not share the OTP with anyone.";
-         \Notification::send([ $phone, ],
+         Notification::send([ $phone, ],
             new \App\Notifications\SMSNotification($msg)
          );
          $user = User::where('phone', $phone)->first();

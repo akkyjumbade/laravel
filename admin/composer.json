@@ -4,7 +4,7 @@
    "type": "library",
    "autoload": {
       "psr-4": {
-         "Akshayjumbade\\Admin\\": "src/"
+         "Admin\\": "src/"
       }
    },
    "authors": [
@@ -13,5 +13,12 @@
          "email": "akkyjumbade@gmail.com"
       }
    ],
-   "require": {}
+   "require": {},
+   "extra": {
+      "laravel": {
+         "providers": [
+            "Admin\\AdminServiceProvider"
+         ]
+      }
+   }
 }

@@ -31,10 +31,7 @@ trait UserTrait {
          $user = auth('jwt')->user();
          $token = auth('jwt')->refresh();
          $user->load('address');
-         $customAttrs = $user->custom_attrs;
-         $user = array_merge($user->toArray(), [
-            'attrs' => $customAttrs
-         ]);
+
          return response()->success(array_merge([
             'data' => [
                'token' => $token,

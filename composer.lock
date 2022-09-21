@@ -4,8 +4,40 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ff193f9d70affed9f01a54e800526eb",
+    "content-hash": "6847dce1bae92345947e270599bf35c0",
     "packages": [
+        {
+            "name": "akshayjumbade/admin",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./admin",
+                "reference": "5625eddae117932ae5608149b8c444b6900c12b3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Admin\\AdminServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Admin\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Akshay Jumbade",
+                    "email": "akkyjumbade@gmail.com"
+                }
+            ],
+            "description": "Control panel for laravel app",
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
@@ -8365,7 +8397,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "akshayjumbade/admin": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

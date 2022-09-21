@@ -10,6 +10,7 @@
    "require": {
       "php": "^7.3|^8.0",
       "ext-json": "*",
+      "akshayjumbade/admin": "dev-main",
       "fruitcake/laravel-cors": "^2.0",
       "guzzlehttp/guzzle": "^7.0.1",
       "inertiajs/inertia-laravel": "^0.5.4",
@@ -43,7 +44,10 @@
       }
    },
    "repositories": [
-
+      {
+         "type": "path",
+         "url": "./admin"
+      }
    ],
    "scripts": {
       "post-autoload-dump": [

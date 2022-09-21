@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
    ApiController,
     FeedController,
+    FormController,
+    UploadController,
 };
 
 /*
@@ -24,3 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', ApiController::class);
 Route::get('/feed', FeedController::class);
+Route::post('/upload', UploadController::class);
+Route::prefix('forms')->group(function() {
+   Route::post('contact', [ FormController::class, 'saveContactForm' ]);
+});

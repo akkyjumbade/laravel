@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Admin\Traits\HasTeams;
 use Admin\Traits\UseAccessControl;
-use App\Models\Scopes\ActiveUserScope;
+use App\Scopes\ActiveUserScope;
 use App\Traits\JWTAUthTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +17,6 @@ class User extends Authenticatable  implements JWTSubject
 {
    use HasApiTokens, HasFactory, Notifiable;
    use UseAccessControl;
-   use HasTeams;
    use JWTAUthTrait;
 
    /**

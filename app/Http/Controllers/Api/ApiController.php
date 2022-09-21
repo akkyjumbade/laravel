@@ -66,14 +66,7 @@ class ApiController extends Controller
       if ($request->user()) {
          $data['user'] = new UserResource($user);
       }
-      $data['routes'] = [];
-      // $data['routes']['/'] = [
-      //    'get' => [
-      //       'params' => [
-      //          'user_id' => [ 'type' => 'number' ]
-      //       ],
-      //    ],
-      // ];
+
       return response()->json($data);
    }
 
