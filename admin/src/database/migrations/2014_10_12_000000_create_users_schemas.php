@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('username')->unique();
             $table->string('phone')->nullable();
-            $table->string('phone_prefix')->nullable();
             $table->timestampTz('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
@@ -45,22 +44,25 @@ return new class extends Migration
          if (!Schema::hasColumn($table->getTable(), 'password')) {
             $table->string('password')->nullable();
          }
-         if (!Schema::hasColumn($table->getTable(), 'gender')) {
-            $table->string('gender')->nullable();
-         }
-         if (!Schema::hasColumn($table->getTable(), 'birth_date')) {
-            $table->date('birth_date')->nullable();
-         }
+         //if (!Schema::hasColumn($table->getTable(), 'gender')) {
+         //   $table->string('gender')->nullable();
+         //}
+         //if (!Schema::hasColumn($table->getTable(), 'birth_date')) {
+         //   $table->date('birth_date')->nullable();
+         //}
          if (!Schema::hasColumn($table->getTable(), 'authentication_type')) {
             $table->string('authentication_type')->nullable();
          }
          if (!Schema::hasColumn($table->getTable(), 'locale')) {
-            $table->string('locale')->nullable();
+            $table->string('locale')->default(config('app.locale'));
          }
          if (!Schema::hasColumn($table->getTable(), 'country_code')) {
             $table->string('country_code')->nullable();
          }
          if (!Schema::hasColumn($table->getTable(), 'deleted_at')) {
+            $table->timestampTz('delete_request_at')->nullable()->comment(
+               'Time when user requested to delete the account'
+            );
             $table->softDeletesTz();
          }
          if (!Schema::hasColumn($table->getTable(), 'last_login_at')) {
@@ -171,6 +173,37 @@ return new class extends Migration
          $table->timestampsTz();
       });
 
+      Schema::create('jobs', function (Blueprint $table) {
+         $table->bigIncrements('id');
+         $table->string('queue')->index();
+         $table->longText('payload');
+         $table->unsignedTinyInteger('attempts');
+         $table->unsignedInteger('reserved_at')->nullable();
+         $table->unsignedInteger('available_at');
+         $table->unsignedInteger('created_at');
+      });
+      Schema::create('job_batches', function (Blueprint $table) {
+         $table->string('id')->primary();
+         $table->string('name');
+         $table->integer('total_jobs');
+         $table->integer('pending_jobs');
+         $table->integer('failed_jobs');
+         $table->text('failed_job_ids');
+         $table->mediumText('options')->nullable();
+         $table->integer('cancelled_at')->nullable();
+         $table->integer('created_at');
+         $table->integer('finished_at')->nullable();
+      });
+      Schema::create('failed_jobs', function (Blueprint $table) {
+         $table->id();
+         $table->string('uuid')->unique();
+         $table->text('connection');
+         $table->text('queue');
+         $table->longText('payload');
+         $table->longText('exception');
+         $table->timestampTz('failed_at')->useCurrent();
+      });
+
    }
 
    /**
@@ -192,5 +225,8 @@ return new class extends Migration
       Schema::dropIfExists('notifications');
       Schema::dropIfExists('activity_logs');
       Schema::dropIfExists('sessions');
+      Schema::dropIfExists('jobs');
+      Schema::dropIfExists('job_batches');
+      Schema::dropIfExists('failed_jobs');
    }
 };

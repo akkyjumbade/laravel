@@ -23,6 +23,6 @@ class App extends Component
     */
    public function render()
    {
-      return view('preset::layouts.app');
+      return view('layouts/app/index');
    }
 }

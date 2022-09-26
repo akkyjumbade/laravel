@@ -3,6 +3,7 @@
 namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Taxonomy extends Model
 {
@@ -14,6 +15,14 @@ class Taxonomy extends Model
     */
    protected $fillable = [
       'title',
+      'slug',
+      'description',
+      //'description',
       'parent_id',
    ];
+
+   function terms(): HasMany
+   {
+      return $this->hasMany(Term::class);
+   }
 }

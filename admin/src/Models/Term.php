@@ -3,6 +3,7 @@
 namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Term extends Model
 {
@@ -14,8 +15,13 @@ class Term extends Model
     */
    protected $fillable = [
       'title',
-      'code',
+      'slug',
       'parent_id',
       'taxonomy_id',
    ];
+
+   function taxonomy(): BelongsTo
+   {
+      return $this->belongsTo(Taxonomy::class, 'taxonomy_id');
+   }
 }

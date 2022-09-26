@@ -31,12 +31,19 @@ Route::group([
    Route::get('/inbox', [NotificationController::class, '__invoke'])->name('inbox');
    Route::get('/notifications', [NotificationController::class, '__invoke'])->name('notifications');
    Route::get('settings', [SettingController::class, 'index'])->name('settings');
-   Route::get('storage', [StorageController::class, 'index'])->name('index');
-   Route::get('broadcast', [BroadcastController::class, 'index'])->name('index');
+
+   Route::prefix('storage')->as('storage.')->group(function () {
+      Route::get('/', [StorageController::class, 'index'])->name('index');
+   });
+   Route::prefix('broadcast')->as('broadcast.')->group(function () {
+      Route::get('/', [BroadcastController::class, 'index'])->name('index');
+   });
+
+
    // Access control list
    Route::get('acl', [RoleController::class, 'acl'])->name('acl');
    Route::resource('roles', RoleController::class)->names('roles');
-   Route::resource('roles.permissions', PermissionController::class)->names('permissions');
+   Route::resource('roles.permissions', PermissionController::class)->names('role_permissions');
    Route::resource('permissions', PermissionController::class)->names('permissions');
    Route::resource('taxonomies', TaxonomyController::class)->names('taxonomies');
    Route::resource('taxonomies.terms', TaxonomyTermController::class)->names('taxonomy_terms');

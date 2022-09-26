@@ -80,7 +80,7 @@ class AdminCreateCommand extends Command
             'email' => $email,
             // 'email' => $email,
          ]), function($user) use ($roleId) {
-            dump($user->roles, $roleId);
+            //dump($user->roles, $roleId);
             $user->roles()->attach($roleId);
          });
          DB::commit();

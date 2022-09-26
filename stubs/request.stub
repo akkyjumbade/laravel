@@ -11,7 +11,7 @@ class {{ class }} extends FormRequest
    *
    * @return bool
    */
-   public function authorize()
+   public function authorize(): bool
    {
       $user = $this->user();
       return $user->can('can_do_this');
@@ -23,20 +23,22 @@ class {{ class }} extends FormRequest
    *
    * @return array
    */
-   public function rules()
+   public function rules(): array
    {
       return [
          //
       ];
    }
 
-   function attributes() {
+   function attributes(): array
+   {
       return [
          // '' => ''
       ];
    }
 
-   function messages() {
+   function messages(): array
+   {
       return [
          // '' => ''
       ];

@@ -28,4 +28,9 @@ class Attachment extends Model
       'meta',
       'published_at',
    ];
+
+   protected  $casts = [
+      'published_at' => 'date',
+      //'published_at' => 'date',
+   ];
 }

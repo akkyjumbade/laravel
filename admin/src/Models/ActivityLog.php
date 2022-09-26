@@ -4,6 +4,7 @@ namespace Admin\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ActivityLog extends Model
 {
@@ -34,7 +35,7 @@ class ActivityLog extends Model
       'session_data' => 'array',
    ];
 
-   function user() {
+   function user(): BelongsTo {
       return $this->belongsTo(
          User::class,
          'performed_by_user_id'

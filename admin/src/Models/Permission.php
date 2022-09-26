@@ -3,6 +3,7 @@
 namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Permission extends Model
 {
@@ -19,7 +20,7 @@ class Permission extends Model
       'parent_id',
    ];
 
-   function roles() {
+   function roles(): BelongsToMany {
       return $this->belongsToMany(Role::class);
    }
 

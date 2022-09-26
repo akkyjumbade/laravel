@@ -4,15 +4,15 @@
    "permissions": "Permissions",
    "users": "Users",
    "categories": "Categories",
-   "vehicles": "Vehicles",
    "admin": "Administrator",
    "user": "User",
    "role": "Role",
    "password": "Password",
    "description": "Description",
-   "RESOURCES": "RESOURCES",
-   "Logout": "Logout",
+   "logout": "Logout",
    "bio": "Bio",
+   "user_profile_updated_msg": "Your profile updated successfuly",
+   "user_profile_photo_updated_msg": "Your profile photo updated successfuly",
    "validation_failed": "Please check all required fields.",
    "otp_sms": "Dear User, Your OTP for login is :otp Note: The OTP is valid for 30 mins only. Do not share the OTP with anyone."
 }

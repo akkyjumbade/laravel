@@ -3,6 +3,7 @@
 namespace Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -23,16 +24,23 @@ class Role extends Model
       'is_readonly',
    ];
 
-   function permissions(): BelongsToMany {
+   function permissions(): BelongsToMany
+   {
       return $this->belongsToMany(
          Permission::class,
       );
    }
 
-   function children(): HasMany {
+   function children(): HasMany
+   {
       return $this->hasMany(
          self::class,
          'parent_id'
       );
+   }
+
+   function parent(): BelongsTo
+   {
+      return $this->belongsTo(self::class, 'parent_id');
    }
 }

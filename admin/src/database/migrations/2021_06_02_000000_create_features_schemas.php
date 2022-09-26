@@ -51,6 +51,7 @@ return new class extends Migration
          $table->string('color')->default('#000');
          $table->longText('meta')->nullable();
          $table->timestampTz('published_at')->nullable();
+         $table->foreignId('created_by_user_id')->constrained('users', 'id')->nullOnDelete();
          $table->softDeletesTz();
          $table->timestampsTz();
       });
@@ -65,11 +66,11 @@ return new class extends Migration
       Schema::create('taxonomies', function (Blueprint $table) {
          $table->id();
          $table->string('title');
-         $table->string('code');
-         $table->string('excerpt')->nullable();
+         $table->string('slug');
+         $table->text('excerpt')->nullable();
+         $table->longText('description')->nullable();
          $table->foreignId('thumbnail_id')->nullable()->constrained('attachments')->nullOnDelete();
          $table->foreignId('icon_id')->nullable()->constrained('attachments')->nullOnDelete();
-         $table->longText('description')->nullable();
          $table->foreignId('parent_id')->nullable()->constrained($table->getTable(), 'id')->cascadeOnDelete();
          $table->timestampsTz();
          $table->softDeletesTz();
@@ -77,11 +78,11 @@ return new class extends Migration
       Schema::create('terms', function (Blueprint $table) {
          $table->id();
          $table->string('title');
-         $table->string('code');
+         $table->string('slug');
          $table->foreignId('taxonomy_id')->constrained('taxonomies', 'id')->cascadeOnDelete();
-         $table->string('excerpt')->nullable();
          $table->foreignId('thumbnail_id')->nullable()->constrained('attachments', 'id')->nullOnDelete();
          $table->foreignId('icon_id')->nullable()->constrained('attachments', 'id')->nullOnDelete();
+         $table->text('excerpt')->nullable();
          $table->longText('description')->nullable();
          $table->foreignId('parent_id')->nullable()->constrained($table->getTable(), 'id')->cascadeOnDelete();
          $table->timestampsTz();
@@ -95,7 +96,7 @@ return new class extends Migration
       Schema::create('tags', function (Blueprint $table) {
          $table->id();
          $table->string('name')->nullable();
-         $table->foreignIdFor(User::class, 'user_id');
+         $table->foreignId('user_id')->nullable()->constrained('users', 'id')->cascadeOnDelete();
          $table->timestampsTz();
       });
       Schema::create('taggables', function (Blueprint $table) {

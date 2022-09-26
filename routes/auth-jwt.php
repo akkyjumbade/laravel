@@ -21,7 +21,6 @@ Route::group([
       Route::post('/update', [ ProfileController::class, 'update' ]);
       Route::post('/profile', [ ProfileController::class, 'update']);
       Route::post('/profile-photo', [ ProfileController::class, 'updateProfilePhoto']);
-      Route::post('/address', [ ProfileController::class, 'updateAddress']);
       Route::get('/notifications', [ ProfileController::class, 'notifications']);
       Route::post('/notifications/mark_as_read', [ ProfileController::class, 'markAsReadNotification']);
    });

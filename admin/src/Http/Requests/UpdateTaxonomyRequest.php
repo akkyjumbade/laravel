@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateProfileRequest extends FormRequest
+class StoreTaxonomyRequest extends FormRequest
 {
    /**
     * Determine if the user is authorized to make this request.
@@ -14,7 +13,8 @@ class UpdateProfileRequest extends FormRequest
     */
    public function authorize()
    {
-      return $this->user();
+      $user = $this->user();
+      return $user->can('create_taxonomy');
    }
 
    /**
@@ -25,19 +25,19 @@ class UpdateProfileRequest extends FormRequest
    public function rules()
    {
       return [
-         'first_name' => [
-            'nullable',
+         'title' => [
+            'required',
+            'string',
+            'max:200'
          ],
-         'middle_name' => [
-            'nullable',
+         'slug' => [
+            'required',
+            'string',
          ],
-         'last_name' => [
+         'description' => [
             'nullable',
-         ],
-         'email' => [
-            'nullable',
-            'email:rfc,dns',
-            Rule::unique('users')->ignore($this->user())
+            'string',
+            'max:200'
          ],
       ];
    }

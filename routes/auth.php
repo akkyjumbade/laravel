@@ -65,3 +65,10 @@ Route::any('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
 
+
+// Authenticate routes
+Route::middleware([ 'auth', ])->group(function() {
+   Route::get('/dashboard', [ \App\Http\Controllers\UserController::class, 'index' ])->name('dashboard');
+});
+
+require_once  __DIR__ . '/user.php';
